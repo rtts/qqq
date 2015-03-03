@@ -1,0 +1,15 @@
+{% load customfilters %}
+{% load i18n %}
+        <p>
+          <ul class="tagcloud">
+            {% for tag in tags_list %}
+            <li class="tag tag{{tag.font_size}}">
+              {% if tag.name|appears_in:selected_tags %}
+              {{tag.name}}
+              {% else %}
+              <a style="font-weight: normal" href="{% url qqq.questions.views.questions %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort'%}={% trans sort %}&{% endif %}{% trans 'tag' %}={{tag.name}}">{{tag.name}}</a>
+              {% endif %}
+            </li>
+            {% endfor %}
+          </ul>
+        </p>

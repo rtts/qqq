@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ block.super }} - {% trans "The Community Quest for the Ultimate Collection of Quiz Questions" %}{% endblock %}
+{% block menu_questions %}{% endblock %}
+{% block menu_home %} current{% endblock %}
+
+{% block heading %}
+{% include "search.html" %}
+{% endblock %}
+
+{% block wing %}
+{% include "tag_cloud.html" %}
+{% endblock %}
+
+{% block trunk %}
+{% include frontpage %}
+{% endblock %}

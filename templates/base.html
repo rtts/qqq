@@ -1,0 +1,84 @@
+{% load i18n %}<!doctype html>
+<html>
+  <head>
+    <title>
+      {% block title %}Quality Quiz Questions{% endblock %}
+    </title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8"></meta>
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="viewport" content="width=device-width" />
+    <link rel="stylesheet" href="/files/main.css" type="text/css"></link>
+    <link rel="stylesheet" href="/files/mobile.css" media="only screen and (max-device-width: 800px)" type="text/css"></link>
+    <link rel="stylesheet" href="/files/mobile.css" media="handheld" type="text/css" />
+    {% block javascript %}{% endblock %}
+  </head>
+  <body>
+    {% block youtube %}{% endblock %}
+    <div id="top">
+      <img src="/files/logo.png" id="logo" alt="Quality Quiz Questions" border="0"></img>
+      <br><br>
+      <div id="menu">
+        {% block menu %}
+        <a href="{% url qqq.views.home %}" class="menuitem{% block menu_home %}{% endblock %}">
+          {% trans "home" %}
+        </a>
+        <a href="{% url qqq.questions.views.questions %}" class="menuitem{% block menu_questions %}{% endblock %}" title="{% trans 'Go to the questions!' %}">
+          {% trans "questions" %}
+        </a>
+        <a href="{% url qqq.collections.views.collections %}" class="menuitem{% block menu_collections %}{% endblock %}" title="{% trans 'Ready-to-use quizzes' %}">
+          {% trans "collections" %}
+        </a>
+        {% if not request.user.is_authenticated %}
+        <a href="{% url django.contrib.auth.views.login %}" class="menuitem{% block menu_login %}{% endblock %}">
+          {% trans "login" %}
+        </a>
+        {% endif %}
+        {% endblock %}
+      </div>
+      {% if request.user.is_authenticated %}
+      <br>
+      <div id="messages">
+        {% comment %}Translators: this appears in the upper left corner of every page followed by the username, if a user is logged in{% endcomment %}
+        {% trans "You are logged in as" %}
+        <a style="color:white" href="{% url user_profile.views.edit_profile %}">{{request.user.username}}</a>
+        &ndash;
+        {% if request.user.get_profile.messages %}
+        <a style="color:white" href="{% url qqq.views.home %}">{% blocktrans count request.user.get_profile.messages as nr %}{{nr}} new message{% plural %}{{nr}} new messages{% endblocktrans %}</a>
+        &ndash;
+        {% endif %}
+        <a style="color:white" href="{% url django.contrib.auth.views.logout %}">{% trans "logout" %}</a> &nbsp;
+      </div>
+      {% endif %}
+    </div>
+    <div id="main">
+      <div id="heading">
+        <div id="logo_mask"></div>
+        <center>
+        {% block heading %} {% endblock %}
+        </center>
+      </div>
+      <div id="wing">
+        {% block wing %}
+        {% endblock %}
+      </div>
+      <div id="trunk">
+        {% block trunk %}
+        {% block content %}{% endblock %}
+        {% endblock %}
+      </div>
+    </div>
+    <div id="footer">
+      {% block footer %}
+      <p>
+      {% trans 'All user contributions are licensed under the' %}
+      <a href="http://creativecommons.org/licenses/by-sa/3.0/">
+        {% trans "Creative Commons BY-SA license" %}
+      </a>
+      </p>
+      <p>
+      {% trans 'Quality Quiz Questions is a project by <a href="http://r2src.com/"><img border="0" src="http://r2src.com/logo_small.png" style="vertical-align: top"> Return to the Source</a>' %}
+      </p>
+      {% endblock %}
+    </div>
+  </body>
+</html>

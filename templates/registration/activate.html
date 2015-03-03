@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}} - {% trans "Account Activation" %}{% endblock %}
+
+{% block trunk %}
+        {% if account %}
+        <h1>
+          {% trans "Account Activated!" %}
+        </h1>
+        <p>
+          {% trans 'Congratulations, you are now an official member of the Quality Quiz Questions Community! You can <a href="/login/">login</a> with your username and password.' %}
+        </p>
+        {% else %}
+        <h1>
+          {% trans "Account Activation Failed" %}
+        </h1>
+        <p>
+          {% trans "The activation link that you used is incorrect. Please visit the <i>exact</i> link that appears in your activation email." %}
+        {% endif %}
+{% endblock %}
+
+{% block wing %}
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

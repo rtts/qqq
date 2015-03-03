@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "Your personal message to"%} {{username}}
+
+</h1>
+{% endblock %}
+
+{% block trunk %}
+<form action="" method="POST">
+{% csrf_token %}
+<div class="inset">
+  <label for="id_subject" class="label">{% trans "Subject" %}</label>
+  {{form.subject.errors}}
+  <input class="input" type="text" name="subject" id="id_subject" value="{{form.data.subject}}"></input>
+</div>
+<div class="inset">
+<label for="id_body" class="label">{% trans "Message" %}</label>
+{{form.body.errors}}
+{{form.body}}
+</div>
+<p>
+<input type="submit" value="{% trans 'Submit' %}">
+</p>
+</form>
+{% endblock %}

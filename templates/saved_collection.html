@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load i18n customfilters %}
+{% load debate_tags %}
+{% block title %}{{block.super}} - {% trans "Collection" %} - {{collection.title}}{% endblock %}
+{% block menu_collections %} current{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+    function select_all(field, link) {
+      if (link.innerHTML.match("select all")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = true ;
+        }
+        link.innerHTML = "select none";
+      }
+      else if (link.innerHTML.match("select none")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = false ;
+        }
+        link.innerHTML = "select all";
+      }
+    }
+    function toggle(id) {
+      var target = document.getElementById(id);
+      if (target.style.display == "none") {
+      	target.style.display="block";
+      }
+      else {
+      	target.style.display="none";
+      }
+    }
+    </script>
+{% endblock %}
+
+{% block heading %}
+        <h1 class="title">
+          {{ collection.title }}
+        </h1>
+{% endblock %}
+
+{% block wing %}
+        <h2 style="margin-top: 1em">
+          {% trans "Download this collection" %}
+        </h2>
+        <ul class="list">
+          <li>
+            <a href="{% url qqq.collections.views.download_saved_collection collection.pk 'txt' %}">
+              {% trans "Download as plain text" %}
+            </a>
+          </li>
+          <li>
+            <a href="{% url qqq.collections.views.download_saved_collection collection.pk 'csv' %}">
+              {% trans "Download as CSV" %}
+            </a>
+          </li>
+          <li>
+            {% trans "Download as PDF" %}
+            <b>
+              {% trans "Coming soon!" %}
+            </b>
+          </li>
+        </ul>
+
+        <h2>
+          {% trans "Description" %}
+        </h2>
+        <p>
+          {{ collection.description|linebreaksbr }}
+        </p>
+        
+      {% if owner %}
+        <h2>
+          {% trans "Options" %}
+        </h2>
+        <ul class="list">
+          <li>
+            <a href="#" onClick="toggle('title_form'); return false">
+              {% trans "Edit collection title" %}
+            </a>
+            <form style="text-indent: 0; display: inline-block" id="title_form" action="{{ collection.get_absolute_url }}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="edit_title">
+              <input style="margin: 12px 0; width: 100%" type="text" name="title" value="{{collection.title}}"></input>
+              <input style="margin-bottom: 12px" type="submit" value="{% trans 'Change title' %}"></input>
+            </form>
+            <script type="text/javascript">
+              document.getElementById('title_form').style.display = 'none'
+            </script>
+          </li>
+          <li>
+            <a href="#" onClick="toggle('description_form'); return false">
+              {% trans "Edit collection description" %}
+            </a>
+            <form style="text-indent: 0; display: inline-block" id="description_form" action="{{ collection.get_absolute_url }}" method="POST">
+              {% csrf_token %}
+              <input type="hidden" name="action" value="edit_description">
+              <div class="inset">
+                <textarea style="width: 100%"name="description" rows="10">{{collection.description}}</textarea>
+              </div>
+              <input style="margin-bottom: 12px" type="submit" value="{% trans 'Change description' %}"></input>
+            </form>
+            <script type="text/javascript">
+              document.getElementById('description_form').style.display = 'none'
+            </script>
+          </li>
+          <li>
+            <a href="#" onClick="toggle('deletion_form'); return false">
+              {% trans "Delete this collection" %}
+            </a>
+            <form style="text-indent: 0; display: inline-block" id="deletion_form" action="{{ collection.get_absolute_url }}" method="POST">
+              {% csrf_token %}
+              <p><input type="checkbox" id="id_deletion" name="action" value="delete_collection">
+              <label for="id_deletion" style="font-weight: bold">{% trans 'I confirm that I want to delete this entire collection' %}</label></p>
+              <p><small>{% trans "(note: deleting a collection will not delete the individual questions)" %}</small></p>
+              <input type="submit" value="{% trans 'Delete collection' %}"></input>
+            </form>
+            <script type="text/javascript">
+              document.getElementById('deletion_form').style.display = 'none'
+            </script>
+          </li>
+        </ul>
+        </form>
+      {% endif %}
+{% endblock %}
+
+{% block trunk %}
+        {% if owner %}
+          {% with is_saved_collection="True" %}
+           {% include "questions_list.html" %}
+          {% endwith %}
+        {% else %}
+          {% with is_saved_collection="True" %}
+            {% include "questions_list.html" %}
+          {% endwith %}
+        {% endif %}
+        
+        <h2>Reacties</h2>
+        {% render_debate collection request.user %}
+
+{% endblock %}

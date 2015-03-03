@@ -1,0 +1,80 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}} - {% trans "Login" %}{% endblock %}
+
+{% block menu_login %} current{% endblock %}
+
+{% block trunk %}
+<center>
+        {% if next %}
+        <h1>{% trans "You need to login to visit that page" %}</h1>
+        {% endif %}
+
+        {% if form.non_field_errors %}
+        <h2 style="color:red">{% trans "Please enter a correct username and password" %}</h2>
+        {% endif %}
+        <form action="" method="post">
+          {% csrf_token %}
+          <table cellspacing="0" id="registration_form" border="0">
+            <tr>
+              <td class="register_form_title">
+                {% trans "Username" %}:
+              </td>
+              <td class="register_form_input">
+                {{form.username}}
+              </td>
+              <td class="register_form_errors">
+                {{form.username.errors}}
+              </td>
+            </tr>
+            <tr>
+              <td class="register_form_title">
+                {% trans "Password" %}:
+              </td>
+              <td class="register_form_input">
+                {{form.password}}
+              </td>
+              <td class="register_form_errors">
+                {{form.password.errors}}
+                <div style="font-size: .7em"><a href="{% url django.contrib.auth.views.password_reset %}">{% trans "I forgot my password" %}</a></div>
+              </td>
+            </tr>
+            <tr>
+              <td></td>
+              <td class="register_form_input">
+                <input type="hidden" name="next" value="{{ next }}" />
+                <input value="Login" style="padding: 5px" type="submit"></input>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+          <script type="text/javascript">
+          document.getElementById('id_username').focus()
+          </script>
+        </form>
+</center>
+{% endblock %}
+
+{% block wing %}
+
+        <p>
+          {% trans "Here you can log in to Quality Quiz Questions with your username and password." %}
+        </p>
+        <p>
+          {% trans "Logged-in users are able to submit ratings, comments, questions, answers, and collections to this site." %}
+        </p>
+        <p>
+          {% trans "Want to become a member?" %}
+          <br>
+          <b>
+            <a href="{% url registration.views.register %}">
+              {% trans "Sign up now!" %}
+            </a>
+          </b>
+        </p>
+
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

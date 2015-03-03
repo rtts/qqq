@@ -1,0 +1,1405 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2011-08-27 07:52+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: jj <jj@r2src.com>\n"
+"Language-Team: \n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: debate/forms.py:24
+msgid "Reply to one of your contributions!"
+msgstr "Reactie op een van je contributies!"
+
+#: debate/urls.py:5
+msgid "post-reply"
+msgstr "reageer"
+
+#: debate/urls.py:6
+msgid "edit-reply"
+msgstr "redigeer"
+
+#: debate/templates/debate.html:4
+msgid "There are no replies yet"
+msgstr "Geen reacties"
+
+#: debate/templates/debate.html:17
+msgid "edit your reply"
+msgstr "bewerk deze reactie"
+
+#: debate/templates/form.html:6
+msgid "Post a reply"
+msgstr "Plaats een reactie"
+
+#: debate/templates/form.html:12
+msgid "You are responding to the following message:"
+msgstr "Je reageert op het volgende bericht:"
+
+#: debate/templates/form.html:21
+msgid "Send me a pm if someone responds to this message"
+msgstr "Hou me op de hoogte van reacties op dit bericht"
+
+#: debate/templates/form.html:23 templates/addquestion.html:102
+#: templates/new_post.html:29 templates/send-pm.html:25
+msgid "Submit"
+msgstr "Verstuur"
+
+#: debate/templates/reply_notification.txt:1
+#, python-format
+msgid ""
+"You wrote:\n"
+"%(original_text)s\n"
+"\n"
+"%(username)s replied with:\n"
+"%(reply_text)s\n"
+"\n"
+"See the complete discussion at: "
+msgstr ""
+"Jij schreef:\n"
+"%(original_text)s\n"
+"\n"
+"%(username)s antwoordde met:\n"
+"%(reply_text)s\n"
+"\n"
+"Zie de complete discussie op "
+
+#: debate/templates/reply_notification.txt:7
+#: templates/registration/password_reset_email.html:7
+msgid "http://en.qualityquizquestions.org"
+msgstr "http://nl.qualityquizquestions.org"
+
+#: qqq/views.py:49 templates/home_members.html:66
+#: templates/home_members.html.py:92 templates/home_members.html:96
+#: templates/home_members.html.py:100 templates/home_members.html:114
+#: templates/home_members.html.py:118 templates/home_members.html:122
+msgid "filter"
+msgstr "filter"
+
+#: qqq/views.py:52 qqq/questions/urls.py:5 templates/base.html:26
+#: templates/home_members.html:70 templates/home_members.html.py:71
+msgid "questions"
+msgstr "vragen"
+
+#: qqq/views.py:56 templates/home_members.html:73
+#: templates/home_members.html.py:74
+msgid "improvements"
+msgstr "verbeteringen"
+
+#: qqq/views.py:60 qqq/collections/urls.py:5 templates/base.html:29
+#: templates/home_members.html:76 templates/home_members.html.py:77
+msgid "collections"
+msgstr "collecties"
+
+#: qqq/views.py:64 templates/home_members.html:79
+#: templates/home_members.html.py:80
+msgid "posts"
+msgstr "berichten"
+
+#. Translators: qqq.org/query=foo&sort=bar&page=2
+#: qqq/views.py:75 qqq/collections/views.py:123 qqq/questions/views.py:78
+#: templates/collections.html:41 templates/collections.html.py:45
+#: templates/collections.html:49 templates/home_members.html:92
+#: templates/home_members.html.py:96 templates/home_members.html:100
+#: templates/home_members.html.py:114 templates/home_members.html:118
+#: templates/home_members.html.py:122 templates/questions.html:79
+#: templates/questions.html.py:83 templates/questions.html:87
+msgid "page"
+msgstr "pagina"
+
+#: qqq/collections/urls.py:6 qqq/collections/urls.py:7
+#: qqq/collections/urls.py:10 qqq/collections/urls.py:11
+#: qqq/collections/urls.py:12 qqq/collections/urls.py:13
+msgid "collection"
+msgstr "collectie"
+
+#: qqq/collections/urls.py:8
+msgid "vote-for-collection"
+msgstr "stem-op-collectie"
+
+#: qqq/collections/urls.py:9
+msgid "add-collection"
+msgstr "nieuwe-collectie"
+
+#: qqq/collections/urls.py:11
+msgid "add-questions"
+msgstr "toevoegen"
+
+#: qqq/collections/urls.py:12 qqq/collections/urls.py:13
+msgid "download"
+msgstr "download"
+
+#: qqq/collections/views.py:88 qqq/collections/views.py:97
+#: qqq/collections/views.py:99 qqq/collections/views.py:210
+#: qqq/collections/views.py:219 qqq/collections/views.py:221
+#: qqq/revisions/views.py:79 templates/question.html:254
+#: templates/questions_list.html:24 templates/questions_list.html.py:29
+msgid "question"
+msgstr "vraag"
+
+#. Translators: qqq.org/search?query=foo
+#: qqq/collections/views.py:125 qqq/collections/views.py:126
+#: qqq/questions/views.py:59 qqq/questions/views.py:60
+#: templates/collections.html:13 templates/collections.html.py:41
+#: templates/collections.html:45 templates/collections.html.py:49
+#: templates/questions.html:42 templates/questions.html.py:79
+#: templates/questions.html:83 templates/questions.html.py:87
+#: templates/search.html:5 templates/tag_cloud.html:10
+msgid "query"
+msgstr "zoekopdracht"
+
+#. Translators: qqq.org/search?sort=foo
+#: qqq/collections/views.py:364 qqq/questions/views.py:36
+#: templates/collections.html:16 templates/collections.html.py:41
+#: templates/collections.html:45 templates/collections.html.py:49
+#: templates/questions.html:57 templates/questions.html.py:79
+#: templates/questions.html:83 templates/questions.html.py:87
+#: templates/search.html:11 templates/tag_cloud.html:10
+msgid "sort"
+msgstr "sorteer"
+
+#: qqq/posts/urls.py:5
+msgid "post"
+msgstr "bericht"
+
+#: qqq/posts/urls.py:6
+msgid "new-post"
+msgstr "nieuw-bericht"
+
+#: qqq/posts/urls.py:7
+msgid "edit-post"
+msgstr "bewerk-bericht"
+
+#: qqq/questions/urls.py:8
+msgid "vote-for-deletion"
+msgstr "stem-voor-verwijdering"
+
+#: qqq/questions/urls.py:9
+msgid "add-question"
+msgstr "nieuwe-vraag"
+
+#: qqq/questions/urls.py:10
+msgid "update-tags"
+msgstr "update-tags"
+
+#. Translators: these are the URL options for sort
+#: qqq/questions/views.py:46 qqq/questions/views.py:49
+#: templates/collection.html:96 templates/collection.html.py:98
+#: templates/questions.html:58 templates/questions.html.py:59
+msgid "quality"
+msgstr "kwaliteit"
+
+#: qqq/questions/views.py:46 qqq/questions/views.py:50
+#: templates/collection.html:102 templates/collection.html.py:104
+#: templates/questions.html:61 templates/questions.html.py:62
+msgid "difficulty"
+msgstr "moeilijkheid"
+
+#: qqq/questions/views.py:46 qqq/questions/views.py:51
+#: templates/questions.html:64
+msgid "created"
+msgstr "datum"
+
+#. Translators: qqq.org/search?query=foo&tag=bar
+#: qqq/questions/views.py:65 qqq/questions/views.py:66
+#: templates/questions.html:45 templates/questions.html.py:55
+#: templates/questions.html:79 templates/questions.html.py:83
+#: templates/questions.html:87 templates/search.html:8
+#: templates/tag_cloud.html:10
+msgid "tag"
+msgstr "tag"
+
+#. Translators: qqq.org/search?contains=video
+#: qqq/questions/views.py:71 qqq/questions/views.py:73
+msgid "contains"
+msgstr "bevat"
+
+#: templates/addquestion.html:3 templates/addquestion.html.py:21
+msgid "Suggest an improvement"
+msgstr "Stel een verbetering voor"
+
+#: templates/addquestion.html:3
+msgid "Add a question"
+msgstr "Voeg een vraag toe"
+
+#: templates/addquestion.html:25
+msgid "Add a new question to the database"
+msgstr "Voeg een vraag toe"
+
+#: templates/addquestion.html:66 templates/question.html:70
+msgid "Question"
+msgstr "Vraag"
+
+#: templates/addquestion.html:76
+msgid "Answer"
+msgstr "Antwoord"
+
+#: templates/addquestion.html:83 templates/download.txt:57
+#: templates/question.html:285
+msgid "Sources"
+msgstr "Bronnen"
+
+#: templates/addquestion.html:91 templates/question.html:114
+msgid "Tags"
+msgstr "Tags"
+
+#: templates/addquestion.html:98
+msgid "Send me a pm when someone replies to this question"
+msgstr "Hou me op de hoogte van reacties op deze vraag"
+
+#: templates/addrevision.html:3 templates/addrevision.html.py:7
+msgid "Preview of improved question"
+msgstr "Preview van verbeterde vraag"
+
+#: templates/addrevision.html:21
+msgid "Please give a description of your changes"
+msgstr "Geef een samenvatting van de veranderingen"
+
+#: templates/addrevision.html:27
+msgid "Summary"
+msgstr "Samenvatting"
+
+#: templates/addrevision.html:36
+msgid "Save"
+msgstr "Opslaan"
+
+#: templates/base.html:23
+msgid "home"
+msgstr "home"
+
+#: templates/base.html:25
+msgid "Go to the questions!"
+msgstr "Naar de vragen!"
+
+#: templates/base.html:28
+msgid "Ready-to-use quizzes"
+msgstr "Kant-en-klare quizzen"
+
+#: templates/base.html:33
+msgid "login"
+msgstr "login"
+
+#. Translators: this appears in the upper left corner of every page followed by the username, if a user is logged in
+#: templates/base.html:42
+msgid "You are logged in as"
+msgstr "Ingelogd als"
+
+#: templates/base.html:46
+#, python-format
+msgid "%(nr)s new message"
+msgid_plural "%(nr)s new messages"
+msgstr[0] "%(nr)s nieuw bericht"
+msgstr[1] "%(nr)s nieuwe berichten"
+
+#: templates/base.html:49
+msgid "logout"
+msgstr "uitloggen"
+
+#: templates/base.html:73
+msgid "All user contributions are licensed under the"
+msgstr "Voor alle bijdragen van gebruikers geldt de"
+
+#: templates/base.html:75
+msgid "Creative Commons BY-SA license"
+msgstr "Creative Commons BY-SA licentie"
+
+#: templates/base.html:79
+msgid ""
+"Quality Quiz Questions is a project by <a href=\"http://r2src.com/\"><img "
+"border=\"0\" src=\"http://r2src.com/logo_small.png\" style=\"vertical-align: "
+"top\"> Return to the Source</a>"
+msgstr ""
+"Quality Quiz Questions is een project van <a href=\"http://r2src.com/\"><img "
+"border=\"0\" src=\"http://r2src.com/logo_small.png\" style=\"vertical-align: "
+"top\"> Return to the Source</a>"
+
+#: templates/collection.html:3 templates/collection.html.py:26
+msgid "Your personal collection"
+msgstr "Uw persoonlijke collectie"
+
+#: templates/collection.html:32 templates/saved_collection.html:43
+msgid "Download this collection"
+msgstr "Download collectie"
+
+#: templates/collection.html:35 templates/saved_collection.html:48
+msgid "Download as plain text"
+msgstr "Download als plain text"
+
+#: templates/collection.html:36 templates/saved_collection.html:53
+msgid "Download as CSV"
+msgstr "Download als CSV"
+
+#: templates/collection.html:37 templates/saved_collection.html:57
+msgid "Download as PDF"
+msgstr "Download als PDF"
+
+#: templates/collection.html:37 templates/saved_collection.html:59
+msgid "Coming soon!"
+msgstr "Binnenkort beschikbaar!"
+
+#: templates/collection.html:40
+msgid "Publish this collection"
+msgstr "Publiceer deze collectie"
+
+#: templates/collection.html:49
+msgid "Title"
+msgstr "Titel"
+
+#: templates/collection.html:57 templates/saved_collection.html:65
+msgid "Description"
+msgstr "Beschrijving"
+
+#: templates/collection.html:63
+msgid "Publish"
+msgstr "Publiceer"
+
+#: templates/collection.html:68
+msgid "Add to previously published collection"
+msgstr "Voeg toe aan een van je collecties"
+
+#: templates/collection.html:80
+msgid "Add questions"
+msgstr "Voeg toe"
+
+#: templates/collection.html:91 templates/questions.html:48
+#, python-format
+msgid "%(nr)s question"
+msgid_plural "%(nr)s questions"
+msgstr[0] "%(nr)s vraag"
+msgstr[1] "%(nr)s vragen"
+
+#: templates/collection.html:92 templates/questions.html:56
+msgid "sorted by"
+msgstr "gesorteerd op"
+
+#: templates/collection.html:108 templates/collection.html.py:110
+#: templates/questions.html:65
+msgid "date"
+msgstr "datum"
+
+#: templates/collection.html:117 templates/collection.html.py:122
+msgid "descending"
+msgstr "aflopend"
+
+#: templates/collection.html:119 templates/collection.html.py:124
+msgid "ascending"
+msgstr "oplopend"
+
+#: templates/collection.html:139
+msgid "Remove selected questions"
+msgstr "Verwijder geselecteerde vragen"
+
+#: templates/collection.html:144
+msgid "There are currently no questions in your collection"
+msgstr "Er zijn momenteel geen vragen in deze collectie"
+
+#: templates/collections.html:4
+msgid "Browse collections"
+msgstr "Collecties"
+
+#: templates/collections.html:14
+msgid "Search Collections"
+msgstr "Zoek in collecties"
+
+#: templates/collections.html:28
+#, python-format
+msgid "%(nr)s collection containing"
+msgid_plural "%(nr)s collections containing"
+msgstr[0] "%(nr)s collectie met"
+msgstr[1] "%(nr)s collecties met"
+
+#: templates/collections.html:99
+msgid "composed by"
+msgstr "samengesteld door"
+
+#: templates/download.txt:1
+msgid "Contents of this file"
+msgstr "Inhoudsopgave"
+
+#: templates/download.txt:3
+msgid ""
+"\n"
+"- Introduction and copyright information\n"
+"- Credits\n"
+"- Questions\n"
+"- Answers\n"
+"- Sources\n"
+msgstr ""
+"\n"
+"- Introductie and copyright informatie\n"
+"- Makers\n"
+"- Vragen\n"
+"- Antwoorden\n"
+"- Bronnen\n"
+
+#: templates/download.txt:11
+msgid "Introduction"
+msgstr "Introductie"
+
+#: templates/download.txt:13
+msgid ""
+"\n"
+"This file contains a user-specified  selection of  quiz  questions\n"
+"and related  resources  that  were  created  by  the Quality  Quiz\n"
+"Questions  community.  It  was  downloaded  from  our  website  at\n"
+"http://en.qualityquizquestions.org/\n"
+"\n"
+"The  next section,  \"Credits\",  lists  the  author(s) involved  in\n"
+"creating  each  of  the  resources   of  the  remaining  sections,\n"
+"\"Questions\", \"Answers\", and \"Sources\". The credits are in the form\n"
+"of usernames of members  of the  Quality Quiz Questions community.\n"
+"You  can  visit a  user's  profile  page  at  the  following  URL:\n"
+"http://en.qualityquizquestions.org/user/<insert username here>/\n"
+"\n"
+"The contents of this file are  licensed under the Creative Commons\n"
+"BY-SA license  (http://creativecommons.org/licenser/by-sa/3.0/) In\n"
+"short, this means you are free to share these questions and modify\n"
+"them,  as long as  you attribute each  question to their  original\n"
+"authors and don't change the license terms.\n"
+msgstr ""
+"\n"
+"Dit bestand  bevat  een selectie van  quizvragen die zijn  gemaakt\n"
+"door  leden  van  de  Quality Quiz  Questions  community.  Het  is\n"
+"gedownload van onze website op http://nl.qualityquizquestions.org/\n"
+"\n"
+"De volgende  sectie, \"Makers\", bevat  de  lijst van personen die\n"
+"betrokken waren bij  het ontwikkelen  van de inhoud onder de  erop\n"
+"volgende  secties, \"Vragen\", \"Antwoorden\"  en \"Bronnen\".  De\n"
+"makers  worden aangeduid met de gebruikersnaam van  hun account op\n"
+"Quality Quiz Questions.  Het publieke profiel van deze  gebruikers\n"
+"is te bezoeken door de gebruikersnaam in te vullen in het volgende\n"
+"adres:\n"
+"http://nl.qualityquizquestions.org/gebruiker/<gebruikersnaam>/\n"
+"\n"
+"De inhoud van dit bestand is beschikbaar onder de Creative Commons\n"
+"BY-SA  licentie  (http://creativecommons.org/licenser/by-sa/3.0/).\n"
+"Kort gezegd komt dit erop neer dat u deze quizvragen mag aanpassen\n"
+"en verder mag verspreiden, onder de voorwaarde u bij elke vraag de\n"
+"originele auteur(s) vermeldt en de licentie niet verandert.\n"
+
+#: templates/download.txt:33
+msgid "Credits"
+msgstr "Makers"
+
+#: templates/download.txt:41
+msgid "Questions"
+msgstr "Vragen"
+
+#: templates/download.txt:49
+msgid "Answers"
+msgstr "Antwoorden"
+
+#: templates/edit_profile.html:3
+msgid "Edit your public profile"
+msgstr "Wijzig je publieke gegevens"
+
+#: templates/edit_profile.html:7
+msgid "Who is"
+msgstr "Wie is"
+
+#: templates/edit_profile.html:14
+msgid "Instructions"
+msgstr "Instructies"
+
+#: templates/edit_profile.html:16
+msgid ""
+"\n"
+"<p>Please describe yourself in a few sentences (or paragraphs).</p>\n"
+"<p>If you want,\n"
+"you can use <a href='http://en.wikipedia.org/wiki/Markdown'>Markdown</a> "
+"for\n"
+"formatting.</p>\n"
+"\n"
+"<p>For headings, underline text like this:</p>\n"
+"\n"
+"<pre>Heading 1\n"
+"=========\n"
+"\n"
+"Heading 2\n"
+"---------</pre>\n"
+"\n"
+"\n"
+"<p>For emphasis, use *asterisks*. This will look like\n"
+"<em>asterisks</em></p>\n"
+"\n"
+"<p>\n"
+"You can produce links like this:<br>\n"
+"<pre>[visit my homepage](http://jayj.dk/grim/)</pre>\n"
+"Which results in <a href=\"http://jayj.dk/grim/\">visit my homepage!</a>\n"
+"</p>\n"
+"\n"
+msgstr ""
+"\n"
+"<p>Beschrijf jezelf in een paar zinnen (of alinea's)</p>\n"
+"<p>Je kunt <a href='http://nl.wikipedia.org/wiki/Markdown'>Markdown</a> "
+"syntax gebruiken voor de opmaak.</p>\n"
+"<p>Bijvoorbeeld:</p>\n"
+"\n"
+"<pre>Heading 1\n"
+"=========\n"
+"\n"
+"Heading 2\n"
+"---------</pre>\n"
+"\n"
+"<p>Voor nadruk, gebruik *<em>sterretjes</em>*</p>\n"
+"\n"
+"<p>En zo maak je een hyperlink:<br>\n"
+"<pre>[visit my homepage](http://jayj.dk/grim/)</pre>\n"
+"Resultaat: <a href=\"http://jayj.dk/grim/\">visit my homepage!</a>\n"
+"</p>\n"
+
+#: templates/edit_profile.html:51
+msgid "Update Profile"
+msgstr "Wijzig profiel"
+
+#: templates/feed.html:20
+msgid "A tag removed from the database"
+msgstr "Tag verwijderd"
+
+#: templates/feed.html:22
+msgid "A new tag in the database"
+msgstr "Tag toegevoegd"
+
+#: templates/feed.html:27 templates/feed_posts.html:12
+msgid "A post from"
+msgstr "Een bericht van"
+
+#: templates/feed.html:38
+msgid "A new question from"
+msgstr "Een nieuwe vraag van"
+
+#: templates/feed.html:49
+msgid "An improvement of question"
+msgstr "Verbetering van vraag"
+
+#: templates/feed.html:53 templates/feed_revisions.html:12
+#: templates/questions_list.html:38
+msgid "by"
+msgstr "door"
+
+#: templates/feed.html:66
+msgid "A new collection from"
+msgstr "Een nieuwe collectie van"
+
+#: templates/feed.html:77
+msgid "The tag"
+msgstr "De tag"
+
+#: templates/feed.html:81
+msgid "was removed because it is no longer associated with any questions"
+msgstr "is verwijderd omdat er geen vragen meer mee geassocieerd zijn"
+
+#: templates/feed.html:81
+msgid "New tag:"
+msgstr "Nieuwe tag:"
+
+#: templates/feed.html:91
+msgid "No contributions yet"
+msgstr "Geen"
+
+#: templates/feed_posts.html:27
+msgid "No posts yet"
+msgstr "Geen berichten"
+
+#: templates/feed_questions.html:12
+msgid "A question from"
+msgstr "Een vraag van"
+
+#: templates/feed_questions.html:27
+msgid "No questions yet"
+msgstr "Nog geen vragen"
+
+#: templates/feed_revisions.html:12
+msgid "of"
+msgstr "van"
+
+#: templates/feed_revisions.html:12
+msgid "points"
+msgstr "punten"
+
+#: templates/feed_revisions.html:27
+msgid "No improvements yet"
+msgstr "Nog geen verbeteringen"
+
+#: templates/home_members.html:3
+msgid "Members home"
+msgstr "Homepage voor leden"
+
+#: templates/home_members.html:19
+msgid "New question"
+msgstr "Nieuwe vraag"
+
+#: templates/home_members.html:23 templates/new_post.html:6
+msgid "New post"
+msgstr "Nieuw bericht"
+
+#: templates/home_members.html:29
+msgid "Your personal messages"
+msgstr "Persoonlijke berichten"
+
+#: templates/home_members.html:43
+msgid "Delete this message"
+msgstr "Verwijder dit bericht"
+
+#: templates/home_members.html:48
+msgid "No messages"
+msgstr "Geen berichten"
+
+#: templates/home_members.html:61
+msgid "Recent member contributions"
+msgstr "Recente contributies van leden"
+
+#: templates/home_members.html:65
+msgid "show"
+msgstr "laat zien:"
+
+#: templates/home_members.html:68
+msgid "all contributions"
+msgstr "alle contributies"
+
+#: templates/home_members.html:83
+msgid "Filter"
+msgstr "Filter"
+
+#: templates/home_public.html:3
+msgid "The Community Quest for the Ultimate Collection of Quiz Questions"
+msgstr "De Queeste voor een Ongeevenaarde Collectie van Quizvragen"
+
+#: templates/new_post.html:15 templates/send-pm.html:15
+msgid "Subject"
+msgstr "Onderwerp"
+
+#: templates/new_post.html:21
+msgid "Body"
+msgstr "Bericht"
+
+#: templates/new_post.html:26
+msgid "Send me a pm when someone replies to this post"
+msgstr "Hou me op de hoogte van reacties op dit bericht"
+
+#: templates/pm_sent.html:6
+msgid "Your message was sent successfully!"
+msgstr "Het bericht is verzonden!"
+
+#: templates/profile.html:22
+#, python-format
+msgid "Send %(username)s a personal message"
+msgstr "Stuur %(username)s een persoonlijk bericht"
+
+#: templates/profile.html:30
+#, python-format
+msgid "%(username)s's quality points"
+msgstr "%(username)s's quizpunten"
+
+#: templates/profile.html:33
+#, python-format
+msgid "%(username)s has <b>%(points)s quality point</b>."
+msgid_plural "%(username)s has <b>%(points)s quality points.</b>"
+msgstr[0] "%(username)s heeft <b>%(points)s quizpunt</b>."
+msgstr[1] "%(username)s heeft <b>%(points)s quizpunten</b>."
+
+#: templates/profile.html:36
+msgid ""
+"You receive quality points each time someone positively rates the quality of "
+"a question you submitted. You also receive points each time one of your "
+"improvements is applied."
+msgstr ""
+"Je krijgt quizpunten elke keer als iemand de kwaliteit van een van jouw "
+"vragen positief beoordeeld (met een 6 of hoger). Je krijgt ook punten als "
+"een van jouw verbeteringen wordt doorgevoerd."
+
+#: templates/profile.html:40
+#, python-format
+msgid "%(username)s's recent contributions"
+msgstr "%(username)s's recente contributies"
+
+#: templates/profile.html:49
+msgid "[ page intentionally left empty ]"
+msgstr "[ deze gebruiker heeft geen gegevens ingevuld ]"
+
+#: templates/question.html:79 templates/question.html.py:84
+msgid "previous"
+msgstr "vorige"
+
+#: templates/question.html:89 templates/question.html.py:94
+msgid "next"
+msgstr "volgende"
+
+#: templates/question.html:102
+msgid "Add this question to collection"
+msgstr "Voeg toe aan collectie"
+
+#: templates/question.html:116
+msgid "none"
+msgstr "geen"
+
+#: templates/question.html:118 templates/questions.html:68
+msgid "Change"
+msgstr "Verander"
+
+#: templates/question.html:125
+msgid "Update"
+msgstr "Update"
+
+#: templates/question.html:142
+msgid "What is the quality of this question?"
+msgstr "Wat is de kwaliteit van deze vraag?"
+
+#: templates/question.html:145
+msgid "bad"
+msgstr "slecht"
+
+#: templates/question.html:158
+msgid "good"
+msgstr "goed"
+
+#: templates/question.html:163
+msgid "What is the difficulty of this question?"
+msgstr "Wat is de moeilijkheid van deze vraag?"
+
+#: templates/question.html:166
+msgid "easy"
+msgstr "makkelijk"
+
+#: templates/question.html:179
+msgid "hard"
+msgstr "moeilijk"
+
+#: templates/question.html:190
+msgid "Quality"
+msgstr "Kwaliteit"
+
+#: templates/question.html:194
+msgid "Difficulty"
+msgstr "Moeilijkheid"
+
+#: templates/question.html:210
+msgid "Needs improvement!"
+msgstr "Verbetering nodig!"
+
+#: templates/question.html:213
+msgid ""
+"This question consistently receives poor quality ratings. This has triggered "
+"a proposal for deletion of this question. Please vote for or against the "
+"deletion of this question or, even better, suggest an improvement for this "
+"question!"
+msgstr ""
+"Deze vraag wordt gemiddeld te laag beoordeeld. Dit heeft een stemmingsronde "
+"in gang gezet om deze vraag te verwijderen. Stem hier voor of tegen het "
+"verwijderen van deze vraag, of nog beter, stel een verbetering voor!"
+
+#: templates/question.html:220 templates/questions_list.html:82
+msgid "Delete this question"
+msgstr "Verwijder deze vraag"
+
+#: templates/question.html:226
+msgid "Keep this question"
+msgstr "Behoud deze vraag"
+
+#: templates/question.html:229
+msgid "Score:"
+msgstr "Score:"
+
+#: templates/question.html:230 templates/question.html.py:235
+#: templates/revision.html:43
+msgid "for"
+msgstr "voor"
+
+#: templates/question.html:230 templates/question.html.py:238
+#: templates/revision.html:43
+msgid "against"
+msgstr "tegen"
+
+#: templates/question.html:233
+msgid "This question will be deleted when the score reaches"
+msgstr "Deze vraag wordt verwijderd bij een score van"
+
+#: templates/question.html:233
+msgid "points."
+msgstr "punten."
+
+#: templates/question.html:235 templates/question.html.py:238
+msgid "You voted"
+msgstr "Jij hebt"
+
+#: templates/question.html:235 templates/question.html.py:238
+msgid "the deletion of this question."
+msgstr "het verwijderen van deze vraag gestemd."
+
+#: templates/question.html:248
+msgid "Improvements"
+msgstr "Verbeteringen"
+
+#: templates/question.html:255
+msgid "Suggest a new improvement!"
+msgstr "Stel een nieuwe verbetering voor!"
+
+#: templates/question.html:262
+msgid "The Answer"
+msgstr "Het Antwoord"
+
+#: templates/question.html:266
+msgid "View the answer"
+msgstr "Bekijk het antwoord"
+
+#: templates/question.html:271
+msgid "Hide the answer"
+msgstr "Verberg het antwoord"
+
+#: templates/question.html:289
+msgid "There are no sources (yet)."
+msgstr "Er zijn (nog) geen bronnen."
+
+#: templates/question_deleted.html:27
+msgid ""
+"After a voting round, this question has been deleted. The discussion remains "
+"available at this location."
+msgstr ""
+"Na een stemronde is deze vraag verwijderd. De discussie blijft wel "
+"beschikbaar op deze pagina."
+
+#: templates/question_deleted.html:29
+msgid "Reactions"
+msgstr "Reacties"
+
+#: templates/questions.html:4
+msgid "Find questions"
+msgstr "Vind vragen"
+
+#: templates/questions.html:48
+msgid "containing"
+msgstr "voor"
+
+#: templates/questions.html:54
+msgid "tagged with"
+msgid_plural "tagged with"
+msgstr[0] "met de tag"
+msgstr[1] "met de tags"
+
+#: templates/questions.html:109
+msgid "Save selected questions"
+msgstr "Bewaar geselecteerde vragen"
+
+#: templates/revision.html:3 templates/revision.html.py:7
+msgid "Improved question"
+msgstr "Verbeterde vraag"
+
+#: templates/revision.html:8
+msgid "see original"
+msgstr "bekijk origineel"
+
+#: templates/revision.html:16
+msgid "Suggested by"
+msgstr "Voorgesteld door"
+
+#: templates/revision.html:30
+msgid "Upvote"
+msgstr "Stem voor"
+
+#: templates/revision.html:37
+msgid "Downvote"
+msgstr "Stem tegen"
+
+#: templates/revision.html:40
+msgid "Description of changes"
+msgstr "Beschrijving"
+
+#: templates/revision.html:43
+msgid "Score"
+msgstr "Score"
+
+#: templates/revision.html:45
+#, python-format
+msgid ""
+"\n"
+"This improvement will be applied when the score reaches %(limit)s points.\n"
+msgstr ""
+"\n"
+"Deze verbetering wordt doorgevoerd zodra de score %(limit)s punten bereikt.\n"
+
+#: templates/revision.html:49
+msgid "You have voted <i>for</i> this improvement."
+msgstr "Jij hebt <i>voor</i> deze verbetering gestemd."
+
+#: templates/revision.html:52
+msgid "You have voted <i>against</i> this improvement."
+msgstr "Jij hebt <i>tegen</i> deze verbetering gestemd."
+
+#: templates/saved_collection.html:4
+msgid "Collection"
+msgstr "Collectie"
+
+#: templates/saved_collection.html:73
+msgid "Options"
+msgstr "Opties"
+
+#: templates/saved_collection.html:78
+msgid "Edit collection title"
+msgstr "Wijzig de titel"
+
+#: templates/saved_collection.html:84
+msgid "Change title"
+msgstr "Wijzig de titel"
+
+#: templates/saved_collection.html:92
+msgid "Edit collection description"
+msgstr "Wijzig de beschrijving"
+
+#: templates/saved_collection.html:100
+msgid "Change description"
+msgstr "Wijzig de beschrijving"
+
+#: templates/saved_collection.html:108
+msgid "Delete this collection"
+msgstr "Verwijder deze collectie"
+
+#: templates/saved_collection.html:113
+msgid "I confirm that I want to delete this entire collection"
+msgstr "Ik bevestig dat ik deze collectie wil verwijderen"
+
+#: templates/saved_collection.html:114
+msgid "(note: deleting a collection will not delete the individual questions)"
+msgstr ""
+"(het verwijderen van een collectie verwijdert niet de individuele vragen)"
+
+#: templates/saved_collection.html:115
+msgid "Delete collection"
+msgstr "Verwijder collectie"
+
+#: templates/search.html:6
+msgid "Search Questions"
+msgstr "Zoek Vragen"
+
+#: templates/send-pm.html:6
+msgid "Your personal message to"
+msgstr "Een bericht aan"
+
+#: templates/send-pm.html:20
+msgid "Message"
+msgstr "Bericht"
+
+#: templates/view_pm.html:6
+msgid "A personal message from"
+msgstr "Een bericht van"
+
+#: templates/view_post.html:6
+msgid "A post by"
+msgstr "Een bericht van"
+
+#: templates/registration/activate.html:4
+msgid "Account Activation"
+msgstr "Account activatie"
+
+#: templates/registration/activate.html:9
+msgid "Account Activated!"
+msgstr "Account geactiveerd!"
+
+#: templates/registration/activate.html:12
+msgid ""
+"Congratulations, you are now an official member of the Quality Quiz "
+"Questions Community! You can <a href=\"/login/\">login</a> with your "
+"username and password."
+msgstr ""
+"Gefeliciteerd, je bent officieel lid van Quality Quiz Questions! Je kunt nu "
+"<a href='/login/'>inloggen</a> met je gebruikersnaam en wachtwoord."
+
+#: templates/registration/activate.html:16
+msgid "Account Activation Failed"
+msgstr "Activatie mislukt"
+
+#: templates/registration/activate.html:19
+msgid ""
+"The activation link that you used is incorrect. Please visit the <i>exact</"
+"i> link that appears in your activation email."
+msgstr "De gebruikte activatielink is incorrect."
+
+#: templates/registration/activation_email.txt:1
+msgid ""
+"Dear new member,\n"
+"\n"
+"You have signed up for an account at Quality Quiz Questions. To activate\n"
+"your account, please open a web browser and visit the following address:\n"
+msgstr ""
+"Beste nieuwe gebruiker,\n"
+"\n"
+"Je hebt succesvol een account aangevraagd bij Quality Quiz Questions.\n"
+"Voordat je kunt inloggen op onze site, moet je dit account activeren.\n"
+"Om je account te activeren bezoek je het volgende adres:\n"
+
+#: templates/registration/activation_email.txt:6
+msgid "http://en.qualityquizquestions.org/"
+msgstr "http://nl.qualityquizquestions.org/"
+
+#: templates/registration/activation_email.txt:7
+msgid ""
+"\n"
+"Make sure to visit the exact address as it appears here. Simply clicking on\n"
+"the link should suffice, but in case it doesn't, try copying and pasting "
+"the\n"
+"complete link into the address bar of your browser.\n"
+"\n"
+"If you didn't sign up for an account, someone else has erroneously used "
+"your\n"
+"email address to sign up for our website. In that case, we apologize for "
+"the\n"
+"inconvenience and you can just ignore this email without visiting the\n"
+"activation link. Without activating your account all information of the new\n"
+"account, including your email address, will be automatically deleted within\n"
+"7 days.\n"
+"\n"
+"If you have any questions, you can always contact us at the email address\n"
+"support@qualityquizquestions.org\n"
+"\n"
+"Greetings,\n"
+"the Quality Quiz Questions team\n"
+"http://www.qualityquizquestions.org/\n"
+msgstr ""
+"\n"
+"Zorg dat je exacte adres bezoekt zoals het hier staat. Erop klikken zou\n"
+"moeten volstaan, maar als dat niet werkt probeer dan de link te kopieren\n"
+"en te plakken in de adresbalk van je browser.\n"
+"\n"
+"Als je geen account heb aangevraagd voor onze site, heeft iemand anders\n"
+"waarschijnlijk jouw email adres opgegeven bij het inschrijven. In dat geval\n"
+"bieden wij onze verontschuldigingen aan voor het ongemak. Je kunt deze "
+"email\n"
+"gewoon negeren zonder de activatielink te bezoeken. Als je het account niet\n"
+"activeerd worden alle gegevens na 7 dagen vanzelf verwijderd.\n"
+"\n"
+"Voor vragen kun je altijd contact opnemen via het volgende email adres:\n"
+"support@qualityquizquestions.org\n"
+"\n"
+"Vriendelijke groeten,\n"
+"het Quality Quiz Questions team\n"
+"http://www.qualityquizquestions.org/\n"
+
+#: templates/registration/activation_email_subject.txt:3
+msgid "Activate your Quality Quiz Questions account"
+msgstr "Activeer je account op Quality Quiz Questions"
+
+#: templates/registration/login.html:4
+msgid "Login"
+msgstr "login"
+
+#: templates/registration/login.html:11
+msgid "You need to login to visit that page"
+msgstr "Log in om deze pagina te bezoeken"
+
+#: templates/registration/login.html:15
+msgid "Please enter a correct username and password"
+msgstr "Gebruikersnaam en/of wachtwoord onjuist"
+
+#: templates/registration/login.html:22
+#: templates/registration/registration_form.html:18
+#: templates/registration/registration_form.html:74
+msgid "Username"
+msgstr "Gebruikersnaam"
+
+#: templates/registration/login.html:33
+#: templates/registration/registration_form.html:40
+#: templates/registration/registration_form.html:83
+msgid "Password"
+msgstr "Wachtwoord"
+
+#: templates/registration/login.html:40
+msgid "I forgot my password"
+msgstr "Wachtwoord vergeten?"
+
+#: templates/registration/login.html:62
+msgid ""
+"Here you can log in to Quality Quiz Questions with your username and "
+"password."
+msgstr "Log hier in met je gebruikersnaam en wachtwoord."
+
+#: templates/registration/login.html:65
+msgid ""
+"Logged-in users are able to submit ratings, comments, questions, answers, "
+"and collections to this site."
+msgstr "Leden kunnen allerlei soorten bijdragen leveren aan deze site."
+
+#: templates/registration/login.html:68
+msgid "Want to become a member?"
+msgstr "Wil je lid worden?"
+
+#: templates/registration/login.html:72
+msgid "Sign up now!"
+msgstr "Word lid!"
+
+#: templates/registration/logout.html:5
+msgid "You are now logged out"
+msgstr "Je bent nu uitgelogd"
+
+#: templates/registration/password_change_done.html:6
+msgid "Password change successful"
+msgstr "Wachtwoord veranderd"
+
+#: templates/registration/password_change_done.html:11
+msgid "Your password has been changed."
+msgstr "Uw"
+
+#: templates/registration/password_change_form.html:6
+#: templates/registration/password_change_form.html:21
+msgid "Password change"
+msgstr "Wachtwoord reset"
+
+#: templates/registration/password_change_form.html:17
+msgid "Please correct the error below."
+msgid_plural "Please correct the errors below."
+msgstr[0] "Verbeter de onderstaande fout."
+msgstr[1] "Verbeter de onderstaande fouten."
+
+#: templates/registration/password_change_form.html:23
+msgid ""
+"Please enter your old password, for security's sake, and then enter your new "
+"password twice so we can verify you typed it in correctly."
+msgstr "Typ eerst je oude wachtwoord, en daarna twee je nieuwe wachtwoord."
+
+#: templates/registration/password_change_form.html:29
+msgid "Old password"
+msgstr "Oud wachtwoord"
+
+#: templates/registration/password_change_form.html:34
+msgid "New password"
+msgstr "Nieuw wachtwoord"
+
+#: templates/registration/password_change_form.html:39
+msgid "Password (again)"
+msgstr "Wachtwoord (opnieuw)"
+
+#: templates/registration/password_change_form.html:45
+#: templates/registration/password_reset_confirm.html:23
+msgid "Change my password"
+msgstr "Verander wachtwoord"
+
+#: templates/registration/password_reset_complete.html:6
+msgid "Password reset complete"
+msgstr "Wachtwoord reset voltooid"
+
+#: templates/registration/password_reset_complete.html:12
+msgid "Your password has been set. You can now log in with your new password."
+msgstr "Wachtwoord veranderd."
+
+#: templates/registration/password_reset_complete.html:14
+msgid "Log in"
+msgstr "Inloggen"
+
+#: templates/registration/password_reset_confirm.html:6
+#: templates/registration/password_reset_form.html:6
+msgid "Password reset"
+msgstr "Wachtwoord reset"
+
+#: templates/registration/password_reset_confirm.html:14
+msgid "Enter new password"
+msgstr "Nieuw wachtwoord:"
+
+#: templates/registration/password_reset_confirm.html:16
+msgid ""
+"Please enter your new password twice so we can verify you typed it in "
+"correctly."
+msgstr "Typ twee keer het nieuwe wachtwoord."
+
+#: templates/registration/password_reset_confirm.html:20
+msgid "New password:"
+msgstr "Nieuw wachtwoord:"
+
+#: templates/registration/password_reset_confirm.html:22
+msgid "Confirm password:"
+msgstr "Wachtwoord (opnieuw):"
+
+#: templates/registration/password_reset_confirm.html:28
+msgid "Password reset unsuccessful"
+msgstr "Wachtwoord reset mislukt."
+
+#: templates/registration/password_reset_confirm.html:30
+msgid ""
+"The password reset link was invalid, possibly because it has already been "
+"used.  Please request a new password reset."
+msgstr ""
+"Link ongeldig. Let op dat je de volledige link uit de email gebruikt. De "
+"link werkt maar één keer."
+
+#: templates/registration/password_reset_done.html:6
+msgid "Password reset successful"
+msgstr "Wachtwoord reset geslaagd."
+
+#: templates/registration/password_reset_done.html:12
+msgid ""
+"We've e-mailed you instructions for setting your password to the e-mail "
+"address you submitted. You should be receiving it shortly."
+msgstr "We hebben nadere instructies gestuurd naar het opgegeven email adres."
+
+#: templates/registration/password_reset_email.html:1
+msgid "Dear user"
+msgstr "Beste gebruiker"
+
+#: templates/registration/password_reset_email.html:2
+msgid ""
+"\n"
+"You are receiving this email because you have requested a password reset\n"
+"for your account at Quality Quiz Questions. To set a new password, please\n"
+"visit the following address in your web browser:\n"
+msgstr ""
+"\n"
+"Je ontvangt deze mail omdat je een wachtwoord reset hebt aangevraagd\n"
+"voor je account op Quality Quiz Questions. Bezoek het volgende adres om\n"
+"een nieuw wachtwoord op te geven:\n"
+
+#: templates/registration/password_reset_email.html:8
+msgid ""
+"\n"
+"If you didn't request a password change, someone else has erroneously "
+"issued\n"
+"such a request using your email address. In that case, we apologize for the\n"
+"inconvenience and you can just ignore this email. Until you visit the link\n"
+"above and change your password, your current password will remain valid.\n"
+"\n"
+"If you have any questions, you can always contact us at the email address\n"
+"support@qualityquizquestions.org\n"
+"\n"
+"Greetings,\n"
+"the Quality Quiz Questions team\n"
+"http://www.qualityquizquestions.org/\n"
+msgstr ""
+"\n"
+"Als je geen wachtwoord reset hebt aangevraagd, heeft iemand anders\n"
+"per ongeluk jouw email adres ingevuld bij het aanvragen van een reset.\n"
+"In dat geval onze verontschuldigingen voor het ongemak. Als je niets\n"
+"doet, blijft je wachtwoord gewoon ongewijzigd.\n"
+"\n"
+"Voor vragen kun je altijd contact opnemen via het volgende email adres:\n"
+"support@qualityquizquestions.org\n"
+"\n"
+"Vriendelijke groeten,\n"
+"het Quality Quiz Questions team\n"
+"http://www.qualityquizquestions.org/\n"
+
+#: templates/registration/password_reset_form.html:12
+msgid ""
+"Forgotten your password? Enter your e-mail address below, and we'll e-mail "
+"instructions for setting a new one."
+msgstr ""
+"Wachtwoord vergeten? Vraag een wachtwoord-reset aan door het email-adres in "
+"te vullen waaronder je staat geregistreerd. Wij sturen vervolgens naar dit "
+"adres nadere instructies."
+
+#: templates/registration/password_reset_form.html:16
+msgid "E-mail address:"
+msgstr "Email adres:"
+
+#: templates/registration/password_reset_form.html:16
+msgid "Reset my password"
+msgstr "Reset wachtwoord"
+
+#: templates/registration/registration_complete.html:4
+#: templates/registration/registration_complete.html:8
+msgid "Registration Complete!"
+msgstr "Registratie Voltooid!"
+
+#: templates/registration/registration_complete.html:11
+msgid ""
+"We&rsquo;ve sent an activation link to the email address you specified. When "
+"you visit that link, your account will be activated and you can log in with "
+"your username and password."
+msgstr ""
+"Er is een email verstuurd naar het adres dat je hebt opgegeven. In deze "
+"email staat een activatielink. Je account wordt geactiveerd zodra je deze "
+"link bezoekt."
+
+#: templates/registration/registration_complete.html:14
+msgid "I didn&#39;t get any email!"
+msgstr "Wat als ik geen email krijg?"
+
+#: templates/registration/registration_complete.html:17
+msgid ""
+"Please be patient. The internet&#39;s email-infrastructure will take some "
+"time to deliver your email. Also, check your spam folder as the message "
+"might have accidentally been identified as spam. If you still didn&#39;t get "
+"an email after an hour or so, please <a href='/contact/'>ask the site "
+"administrator</a> to activate your account manually."
+msgstr ""
+"Heb geduld, het duurt soms eventjes voordat de email arriveert. <b>Het zou "
+"kunnen dat ons bericht per ongeluk wordt geclassificeerd als spam, dus houd "
+"je spam-folder in de gaten.</b> Als je naar 10 minuten nog steeds geen email "
+"hebt ontvagen, mail dan even naar <a href='mailto:"
+"support@qualityquizquestions.org'>support@qualityquizquestions.org</a>, "
+"zodat we je account handmatig kunnen activeren."
+
+#: templates/registration/registration_form.html:4
+#: templates/registration/registration_form.html:7
+msgid "Registration"
+msgstr "Registratie"
+
+#: templates/registration/registration_form.html:29
+#: templates/registration/registration_form.html:79
+msgid "Email address"
+msgstr "Email adres"
+
+#: templates/registration/registration_form.html:51
+msgid "Retype password"
+msgstr "Wachtwoord (opnieuw)"
+
+#: templates/registration/registration_form.html:64
+msgid "Register now"
+msgstr "Word lid"
+
+#: templates/registration/registration_form.html:76
+msgid ""
+"Your username is public and will be visible to all visitors of this site. "
+"Please remember or write down the name you choose, because you will need it "
+"every time you log in."
+msgstr ""
+"Je gebruikersnaam is zichtbaar voor alle bezoekers van deze site. Onthoud de "
+"naam die je kiest, want je hebt hem straks nodig om in te loggen."
+
+#: templates/registration/registration_form.html:81
+msgid ""
+"We will not publish your email address on this site or give it to other "
+"parties. We only need it to send you an account activation link."
+msgstr ""
+"Wij zullen je email adres niet publiceren of doorgeven aan anderen. We "
+"hebben het adres alleen nodig om een link te sturen waarmee je je account "
+"kunt activeren."
+
+#: templates/registration/registration_form.html:85
+msgid ""
+"Please choose a password that is hard to guess. Make sure you will not "
+"forget it, because you need it to log in to this site.<br>We do not store "
+"your password on our server. Instead, we store a <a href='http://en."
+"wikipedia.org/wiki/Cryptographic_hash_function'>one-way cryptographic hash</"
+"a> of your password."
+msgstr ""
+"Kies een wachtwoord dat onmogelijk te raden is. Zorg ook dat je het "
+"wachtwoord niet vergeet, want je hebt hem nodig om in te loggen. Wij slaan "
+"je wachtwoord niet op op onze server, maar een <a href='http://nl.wikipedia."
+"org/wiki/Hashfunctie'>cryptografische hash</a> ervan."
+
+#: user_profile/urls.py:5 user_profile/urls.py:6
+msgid "user"
+msgstr "gebruiker"
+
+#: user_profile/urls.py:7
+msgid "pm-delete"
+msgstr "pm-verwijder"
+
+#: user_profile/urls.py:8 user_profile/urls.py:9
+msgid "pm"
+msgstr "pm"
+
+#: user_profile/urls.py:10
+msgid "pm-sent"
+msgstr "pm-verzonden"
+
+#~ msgid "Send this user a message"
+#~ msgstr "Stuur een bericht"
+
+#~ msgid "Request more options by pm'ing <a href='/user/jj/'>jj</a>!"
+#~ msgstr "Mis je een optie? Meld het aan <a href='/user/jj/'>jj</a>!"
+
+#~ msgid "User Profile"
+#~ msgstr "Profiel"
+
+#~ msgid "Suggest an improvement for question"
+#~ msgstr "Verbetering van vraag"

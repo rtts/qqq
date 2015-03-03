@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load markup i18n %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "Post a reply" %}
+</h1>
+{% endblock %}
+
+{% block trunk %}
+{% if parent.lft > 1 %}
+<h2>{% trans "You are responding to the following message:" %}</h2>
+{{parent.text|linebreaks}}
+{% endif %}
+<form action="" method="POST">
+{% csrf_token %}
+<div class="inset">
+{{form.text.errors}}
+{{form.text}}
+</div>
+{{form.notify}}<label for="id_notify">{% trans "Send me a pm if someone responds to this message" %}</label>
+<p>
+<input type="submit" value="{% trans 'Submit' %}">
+</p>
+</form>
+
+{% endblock %}

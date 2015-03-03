@@ -1,0 +1,31 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+{% block javascript %}
+    <style type="text/css">
+      #wing {
+        width: 35%;
+        padding-top: 0;
+      }
+      #trunk {
+        width: 60%;
+      }
+      #heading {
+        width: 98%;
+      }
+    </style>
+{% endblock %}
+
+{% block menu_questions %} current{% endblock %}
+
+{% block heading %}
+<h1 class="title">
+  Deleted
+</h1>
+{% endblock %}
+
+{% block trunk %}
+<em>{% trans "After a voting round, this question has been deleted. The discussion remains available at this location." %}</em>
+
+<h2>{% trans "Reactions" %}</h2>
+{% render_debate question request.user %}
+{% endblock %}

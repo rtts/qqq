@@ -1,0 +1,92 @@
+{% load i18n %}
+          <ol class="inset listview" id="feed">
+            {% for item in feed %}
+            <li class="listitem {% cycle 'odd' 'even' %}">
+              <table cellspacing="0" class="question_item" cellpadding="0" border="0" {%if not item.tagaction%}style="padding: 5px 0 5px 0"{%endif%}>
+                <tr>
+                  <td class="question_item_icon">
+                    {% if item.post %}
+                    <img src="/files/new_post.png" width="24" height="24"></img>
+                    {% else %}{% if item.question %}
+                    <img src="/files/new_question.png" width="24" height="24"></img>
+                    {% if item.question.needs_revision %}
+                    <img src="/files/needs_revision.png" width="24" height="24"></img>
+                    {% endif %}
+                    {% else %}{% if item.revision %}
+                    <img src="/files/new_revision.png" width="24" height="24"></img>
+                    {% else %}{% if item.collection %}
+                    <img src="/files/new_collection.png" width="24" height="24"></img>
+                    {% else %}{% if item.tagaction %} {% if item.tagaction.is_deleted %}
+                    <img src="/files/del_tag.png" width="16" height="16" title="{% trans 'A tag removed from the database' %}"></img>
+                    {% else %}
+                    <img src="/files/new_tag.png" width="16" height="16" title="{% trans 'A new tag in the database' %}"></img>
+                    {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+                  </td>
+                  <td class="question_item_text">
+                    {% if item.post %}
+                    {% trans "A post from" %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}" style="font-weight: normal">
+                          {{item.user.username}}
+                        </a>
+                      </cite>
+                    </big>
+                    <p class="list_paragraph">
+                      <a href="{% url qqq.posts.views.view_post item.post.id %}" style="font-weight: normal">{{item.post.subject}}</a>
+                    </p>
+                    {% else %}{% if item.question %}{% trans "A new question from" %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}" style="font-weight: normal">
+                          {{item.user.username}}
+                        </a>
+                      </cite>
+                    </big>
+                    <p class="list_paragraph" style="text-indent: -.5em">
+                      &ldquo;<a href="{{ item.question.get_absolute_url }}" style="font-weight: normal">{{ item.question.text }}</a>&rdquo;
+                    </p>
+                    {% else %}{% if item.revision %}{% trans "An improvement of question" %}
+                    <a href="{{ item.revision.object.get_absolute_url }}">
+                      vraag {{item.revision.object_id}}
+                    </a>
+                    {% trans 'by' %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}" style="font-weight: normal">
+                          {{item.user.username}}
+                        </a>
+                      </cite>
+                    </big>
+                    <p class="list_paragraph">
+                      <a href="{{ item.revision.get_absolute_url }}" style="font-weight: normal">
+                        {{ item.revision.description }}
+                      </a>
+                    </p>
+                    {% else %}{% if item.collection %}{% trans "A new collection from" %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}" style="font-weight: normal">
+                          {{item.user.username}}
+                        </a>
+                      </cite>
+                    </big>
+                    <p class="list_paragraph">
+                      <a href="{{ item.collection.get_absolute_url }}" style="font-weight: normal">{{ item.collection.title }}</a>
+                    </p>
+                    {% else %}{% if item.tagaction %} {% if item.tagaction.is_deleted %} {% trans "The tag" %}
+                    <em>
+                      {{ item.tagaction.name }}
+                    </em>
+                    {% trans "was removed because it is no longer associated with any questions" %} {% else %} {% trans "New tag:" %}
+                    <a href="{% url qqq.questions.views.questions %}?tag={{item.tagaction.name}}" style="font-weight: normal">
+                      {{ item.tagaction.name }}
+                    </a>
+                    {% endif %}{% else %}Unknown {{item}} with id {{item.id}}
+                    {% endif %}{% endif %}{% endif %}{% endif %}{% endif %}
+                  </td>
+                </tr>
+              </table>
+            </li>
+            {% empty %} {% trans "No contributions yet" %} {% endfor %}
+          </ol>

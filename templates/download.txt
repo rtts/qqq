@@ -1,0 +1,62 @@
+{% load i18n %}{% trans 'Contents of this file' %}
+==================================================================
+{% blocktrans %}
+- Introduction and copyright information
+- Credits
+- Questions
+- Answers
+- Sources
+{% endblocktrans %}
+
+{% trans 'Introduction' %}
+==================================================================
+{% blocktrans %}
+This file contains a user-specified  selection of  quiz  questions
+and related  resources  that  were  created  by  the Quality  Quiz
+Questions  community.  It  was  downloaded  from  our  website  at
+http://en.qualityquizquestions.org/
+
+The  next section,  "Credits",  lists  the  author(s) involved  in
+creating  each  of  the  resources   of  the  remaining  sections,
+"Questions", "Answers", and "Sources". The credits are in the form
+of usernames of members  of the  Quality Quiz Questions community.
+You  can  visit a  user's  profile  page  at  the  following  URL:
+http://en.qualityquizquestions.org/user/<insert username here>/
+
+The contents of this file are  licensed under the Creative Commons
+BY-SA license  (http://creativecommons.org/licenser/by-sa/3.0/) In
+short, this means you are free to share these questions and modify
+them,  as long as  you attribute each  question to their  original
+authors and don't change the license terms.
+{% endblocktrans %}
+
+{% trans 'Credits' %}:
+==================================================================
+
+{% for q in questions %}
+{{ forloop.counter }}) {{ q.user.username }}{% for c in q.contributors.all %}, {{ c.username }}{% endfor %}.
+{% endfor %}
+
+
+{% trans 'Questions' %}:
+==================================================================
+
+{% for q in questions %}
+{{ forloop.counter }}) {{ q.text|wordwrap:66 }}
+{% endfor %}
+
+
+{% trans 'Answers' %}:
+==================================================================
+
+{% for q in questions %}
+{{ forloop.counter }}) {{ q.answer|wordwrap:66 }}
+{% endfor %}
+
+
+{% trans 'Sources' %}:
+==================================================================
+
+{% for q in questions %}
+{{ forloop.counter }}) {{ q.sources|wordwrap:66 }}
+{% endfor %}

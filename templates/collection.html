@@ -1,0 +1,148 @@
+{% extends "base.html" %}
+{% load i18n customfilters %}
+{% block title %}{{block.super}} - {% trans "Your personal collection" %}{% endblock %}
+{% block menu_collections %} current{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+    function select_all(field, link) {
+      if (link.innerHTML.match("select all")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = true ;
+        }
+        link.innerHTML = "select none";
+      }
+      else if (link.innerHTML.match("select none")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = false ;
+        }
+        link.innerHTML = "select all";
+      }
+    }
+    </script>
+{% endblock %}
+
+{% block heading %}
+<h1 class="title">{% trans "Your personal collection" %}</h1>
+{% endblock %}
+
+{% block wing %}
+{% if questions_list %}
+<h2 style='margin-top: 1em'>
+{% trans "Download this collection" %}
+</h2>
+<ul class="list">
+<li><a href="{% url qqq.collections.views.download 'txt' %}">{% trans "Download as plain text" %}</a></li>
+<li><a href="{% url qqq.collections.views.download 'csv' %}">{% trans "Download as CSV" %}</a></li>
+<li>{% trans "Download as PDF" %} <b>{% trans "Coming soon!" %}</b></li>
+</ul>
+<h2>
+{% trans "Publish this collection" %}
+</h2>
+
+{{ form.non_field_errors }}
+
+<form action="{% url qqq.collections.views.add_collection %}" method="POST">
+{% csrf_token %}
+<div class="inset">
+<label for="id_title" class="label">
+{% trans "Title" %}
+</label>
+{{ form.title.errors }}
+<input type="text" value="{{form.data.title}}" id="id_title" name="title" class="input"></input>
+</div>
+
+<div class="inset">
+<label for="id_description" class="label">
+{% trans "Description" %}
+</label>
+{{ form.description.errors }}
+{{form.description}}
+</div>
+
+<input style="float:right" class='button' type="submit" value="{% trans 'Publish' %}">
+</form>
+
+{% if owned_collections %}
+<h2 style="padding-top: 1em; clear: both">
+{% trans "Add to previously published collection" %}
+</h2>
+
+          <form action="{% url qqq.collections.views.add_to_saved_collection %}" method="POST">
+          {% csrf_token %}
+            <select name="numero" class="dropdown" style="width: 100%; margin-bottom: 1em">
+              {% for option in owned_collections %}
+              <option value="{{option.pk}}">
+                {{option.title}}
+              </option>
+              {% endfor %}
+            </select>
+            <input style="float:right" value="{% trans 'Add questions' %}" type="submit"></input>
+          </form>
+{% endif %}
+{% endif %}
+{% endblock %}
+
+{% block trunk %}
+{% if questions_list %}
+          <form action="{% url qqq.collections.views.collection %}" method="POST" id="results_list">
+            {% csrf_token %}
+            <h3 style="margin-bottom: .5em">
+            {% blocktrans count questions_list.count as nr %}{{nr}} question{% plural %}{{nr}} questions{% endblocktrans %}
+            {% trans "sorted by" %}
+            <select onchange="document.getElementById('results_list').submit()" name="sort" class="dropdown">
+
+              {% if sort == "quality" %}
+              <option value="quality" selected="selected">{% trans "quality" %}</option>
+              {% else %}
+              <option value="quality">{% trans "quality" %}</option>
+              {% endif %}
+
+              {% if sort == "difficulty" %}
+              <option value="difficulty" selected="selected">{% trans "difficulty" %}</option>
+              {% else %}
+              <option value="difficulty">{% trans "difficulty" %}</option>
+              {% endif %}
+
+              {% if sort == "created" %}
+              <option value="created" selected="selected">{% trans "date" %}</option>
+              {% else %}
+              <option value="created">{% trans "date" %}</option>
+              {% endif %}
+
+            </select>
+
+            {% if direction == "descending" %}
+            <input type="radio" id="descending" checked="checked" value="descending" name="direction" onClick="document.getElementById('results_list').submit()"></input>
+            <label for="descending">{% trans 'descending' %}</label>
+            <input type="radio" id="ascending" value="ascending" name="direction" onchange="document.getElementById('results_list').submit()"></input>
+            <label for="ascending">{% trans 'ascending' %}</label>
+            {% else %}
+            <input type="radio" id="descending" value="descending" name="direction" onchange="document.getElementById('results_list').submit()"></input>
+            <label for="descending">{% trans 'descending' %}</label>
+            <input type="radio" id="ascending" checked="checked" value="ascending" name="direction" onClick="document.getElementById('results_list').submit()"></input>
+            <label for="ascending">{% trans 'ascending' %}</label>
+            {% endif %}
+            </h3>
+            
+            <div style="float: right; margin: 5px 10px 5px 0;">
+              {% if questions_list|length > 1 %}
+              <a href="#" onclick="select_all(document.getElementById('results_list').uncheck, this); return false;">
+                select all
+              </a>
+              {% else %} &nbsp; {% endif %}
+            </div>
+
+            {% with action="uncheck" is_collection="True" %}
+            {% include "questions_list.html" %}
+            {% endwith %}
+            <input value="{% trans 'Remove selected questions' %}" style="float: right; margin: 0px 8px 18px 0;" type="submit"></input>
+          </form>
+
+          {% else %}
+          <h3>
+          {% trans "There are currently no questions in your collection" %}
+          </h3>
+          
+          {% endif %}
+{% endblock %}

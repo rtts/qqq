@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block title %}{{block.super}} - {% trans "Registration Complete!" %}{% endblock %}
+
+{% block trunk %}
+        <h1>
+          {% trans "Registration Complete!" %}
+        </h1>
+        <p>
+          {% trans "We&rsquo;ve sent an activation link to the email address you specified. When you visit that link, your account will be activated and you can log in with your username and password." %}
+        </p>
+        <h3>
+          {% trans "I didn&#39;t get any email!" %}
+        </h3>
+        <p>
+          {% trans "Please be patient. The internet&#39;s email-infrastructure will take some time to deliver your email. Also, check your spam folder as the message might have accidentally been identified as spam. If you still didn&#39;t get an email after an hour or so, please <a href='/contact/'>ask the site administrator</a> to activate your account manually." %}
+        </p>
+{% endblock %}
+
+{% block wing %}
+{% endblock %}
+
+
+{% block footer %}
+{% endblock %}

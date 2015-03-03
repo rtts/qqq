@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% load i18n debate_tags %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "A post by" %}
+<a href="{% url user_profile.views.view_profile post.user.username %}">{{post.user.username}}</a>
+{% if post.user.id == request.user.id %}(<a href="{% url qqq.posts.views.edit_post post.id %}">wijzig</a>){% endif %}
+</h1>
+{% endblock %}
+
+{% block trunk %}
+<h2>
+{{post.subject}}
+</h2>
+{{post.text|urlizetrunc:50|linebreaks}}
+
+<h2>Reacties</h2>
+{% render_debate post request.user %}
+{% endblock %} 
+                

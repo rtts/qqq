@@ -1,0 +1,41 @@
+{% extends "question.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Preview of improved question' %}{% endblock %}
+
+{% block question_no %}
+        <h1 class="title">
+          {% trans "Preview of improved question" %}
+        </h1>
+{% endblock %}
+
+{% block tags %}
+{% endblock %}
+
+{% block user %}
+{% endblock %}
+
+{% block rate %}{% endblock %}
+
+{% block wing %}
+        <h2>
+          {% trans "Please give a description of your changes" %}
+        </h2>
+        <form action="" method="POST">
+          {% csrf_token %}
+          <div class="inset">
+            <label for="id_description" class="label">
+              {% trans "Summary" %}
+            </label>
+            {{form.description.errors}}
+            <textarea name="description" rows="5" cols="40">{{form.data.description}}</textarea>
+          </div>
+          {{form.text}}
+          {{form.answer}}
+          {{form.sources}}
+          <input value="true" name="final" type="hidden"></input>
+          <input value="{% trans 'Save' %}" type="submit"></input>
+        </form>
+{% endblock %}
+
+{% block comments %}
+{% endblock %}

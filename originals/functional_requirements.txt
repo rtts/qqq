@@ -1,0 +1,72 @@
+There are 2 types of users:
+- anonymous visitors
+- registered users of varying privilege levels (see below)
+
+Anonymous visitors can:
+- register by:
+  1) entering username
+  2) entering password (twice)
+     - the password is stored as a salted SHA1 hash
+  3) entering valid email address
+  4) solving a captcha (preferably a quiz question :-)
+  5) clicking the emailed validation link
+- browse all areas of the site
+- answer quiz questions
+
+Registered users can:
+- browse all areas of the site
+- answer quiz questions
+- log in:
+  * by entering their username and password
+  * on a _completely_ secure page (so not the homepage)
+  * django's session framework handles all this
+- vote for the quality of quiz questions and answers
+  * with every question the site displays an up- and downvote button
+  * with every answer the site displays an up- and downvote button
+  * only users with a sufficient privilege level will see the downvote button (see below)
+- tag questions
+  * with every question the site displays its tags and a button 'add tags'
+  * if a user clicks it, they can type a tag name
+  * the textbox autocompletes the name to one of the existing tags
+  * only users with a sufficient privilege level can add new tags to the system
+  * only users with a sufficient privilege level can add more than one tag to a question
+  * only users with a sufficient privilege level can remove tags from a question
+- submit new questions
+  * by supplying values for all the fields of a quiz question (see below)
+  * the up/downvotes for this question are added to/subtracted from the user's karma
+- submit improvements to questions
+  * by supplying one or more improved fields of a quiz question
+  * the up/downvotes for this improvement are added to/subtracted from the user's karma
+  * after 'enough' upvotes, the improved question replaces the original question
+  * all subsequent up/downvotes are added to/subtracted from the user's karma
+  * the old question is saved in the question's 'history'
+- discuss topics
+  * in two ways
+- collaborate to make collections of questions
+
+
+A quiz question consists of:
+- an author
+- a question
+- a question quality metric
+- zero or more hints
+- an answer
+- an answer quality metric
+- an explanation (with sources)
+- attributes:
+  * difficulty (measures empirically)
+  * one or more tags
+  * overall quality
+- zero or more comments
+- a 'history'
+
+A question collection consists of:
+- one or more questions
+- a list of contributors
+
+Users automatically earn karma for:
+- answering questions correctly (binnen de tijd)
+
+Users earn karma from other users by
+- submitting quality questions
+- submitting improvements to questions

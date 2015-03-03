@@ -1,0 +1,10 @@
+server {
+  server_name nl.qualityquizquestions.org;
+  location / {
+    include uwsgi_params;
+    uwsgi_pass unix:/tmp/nl.qualityquizquestions.org.sock;
+  }
+  location files {
+    alias files;
+  }
+}

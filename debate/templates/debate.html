@@ -1,0 +1,25 @@
+{% load i18n %}
+<p>
+{% if not list %}
+{% trans "There are no replies yet" %}<br>
+{% endif %}
+<a href="{% url debate.views.post_reply %}?parent={{root.id}}">New reply</a>
+</p>
+{% for node in list %}{% if node == +1 %}<ol class="debate">{% else %}{% if node == -1 %}</ol>
+{% else %}
+<li class="response">
+<a name="{{node.lft}}"></a>
+{% with node.user as user %}
+{% include "user.html" %}
+{% endwith %}
+<span class="date">{{node.modified|date:"DATE_FORMAT"}}</span>
+{% if node.user.id == ruid %}
+<a href="{% url debate.views.edit_reply node.id %}">{% trans "edit your reply" %}</a>
+{% endif %}<br>
+{{node.text|urlizetrunc:50|linebreaks}}
+<p>
+<a href="{% url debate.views.post_reply %}?parent={{node.id}}">Reply to this</a>
+</p>
+</li>
+{% endif %}{% endif %}
+{% endfor %}

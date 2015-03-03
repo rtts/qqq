@@ -1,0 +1,25 @@
+{% load i18n %}{% blocktrans %}Dear new member,
+
+You have signed up for an account at Quality Quiz Questions. To activate
+your account, please open a web browser and visit the following address:
+{% endblocktrans %}
+{% trans 'http://en.qualityquizquestions.org/' %}account/activate/{{activation_key}}/
+{% blocktrans %}
+Make sure to visit the exact address as it appears here. Simply clicking on
+the link should suffice, but in case it doesn't, try copying and pasting the
+complete link into the address bar of your browser.
+
+If you didn't sign up for an account, someone else has erroneously used your
+email address to sign up for our website. In that case, we apologize for the
+inconvenience and you can just ignore this email without visiting the
+activation link. Without activating your account all information of the new
+account, including your email address, will be automatically deleted within
+7 days.
+
+If you have any questions, you can always contact us at the email address
+support@qualityquizquestions.org
+
+Greetings,
+the Quality Quiz Questions team
+http://www.qualityquizquestions.org/
+{% endblocktrans %}

@@ -1,0 +1,90 @@
+{% load i18n %}
+{% load customfilters %}
+            <ol class="inset listview">
+              {% for item in questions_list %}
+              <li style="padding-left: 0" class="listitem {% cycle 'odd' 'even' %}">
+                <table cellspacing="0" class="question_item" cellpadding="0" border="0">
+                  <tr>
+                    <td class="question_item_stats">
+                      <div style="display: inline-block; height: 32px; width: 8px; border: 1px solid #aaa; background: #5b9d7a">
+                        <div style="height: {{item.quality|subtractfrom:1|multiplyby:100}}%; width: 8px; background: #e4dff5"></div>
+                      </div>
+                      <div style="display: inline-block; height: 32px; width: 8px; border: 1px solid #aaa; background: #946464">
+                        <div style="height: {{item.difficulty|subtractfrom:1|multiplyby:100}}%; width: 8px; background: #e4dff5"></div>
+                      </div>
+                    </td>
+                    {% if item.has_video %}
+                    <td class="question_item_icon">
+                      <img src="/files/video-x-generic.png"></img>
+                    </td>
+                    {% endif %}
+                    <td class="question_item_text">
+                      <p class="list_paragraph">
+                        {% if is_saved_collection %}
+                        <a href="{{ collection.get_absolute_url }}?{% trans 'question' %}={{forloop.counter}}" style="font-weight: normal">
+                          {{item.text}}
+                        </a>
+                        {% else %}
+                        {% if is_collection %}
+                        <a href="{% url qqq.collections.views.collection %}?{% trans 'question' %}={{forloop.counter}}" style="font-weight: normal">
+                          {{item.text}}
+                        </a>
+                        {% else %}
+                        <a href="{{ item.get_absolute_url }}" style="font-weight: normal">
+                          {{item.text}}
+                        </a>
+                        {% endif %}
+                        {% endif %}
+                        <cite style="font-size: .75em">{% trans 'by' %} <a style="font-weight: normal" href="{% url user_profile.views.view_profile item.user.username %}">{{item.user.username}}</a>{% for user in item.contributors.all %},
+                        <a style="font-weight: normal" href="{% url user_profile.views.view_profile user.username %}">{{user.username}}</a>{% endfor %}
+                        </cite>
+                        <br>
+                        {% for tag in item.get_tags %}
+                        <a href="{% url qqq.questions.views.questions %}?tag={{tag.name}}" style="font-size: .75em; font-weight: normal">
+                          {{tag.name}}{% if not forloop.last %},{% endif %}</a> {% endfor %} &nbsp;
+                      </p>
+                    </td>
+                    {% if owner %}
+                    <td style="width:25px; padding: 5px 0">
+                      {% if not forloop.first %}
+                      <form action="{{ collection.get_absolute_url }}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="reorder"></input>
+                        <input type="hidden" name="position" value="{{forloop.counter}}"></input>
+                        <input type="hidden" name="direction" value="up"></input>
+                        <input type="image" width="16" height="16" src="/files/upvote_purple.png"></input>
+                      </form>
+                      {% else %}
+                      <img src="/files/upvote_disabled.png">
+                      {% endif %}
+                      {% if not forloop.last %}
+                      <form action="{{ collection.get_absolute_url }}" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="action" value="reorder"></input>
+                        <input type="hidden" name="position" value="{{forloop.counter}}"></input>
+                        <input type="hidden" name="direction" value="down"></input>
+                        <input type="image" width="16" height="16" src="/files/downvote_purple.png"></input>
+                      </form>
+                      {% else %}
+                      <img src="/files/downvote_disabled.png" width="16" height="16">
+                      {% endif %}
+                    </td>
+                    {% endif %}
+                    <td class="question_item_checkbox">
+                    {% if action %}
+                      <input value="{{item.pk}}" name="{{action}}" type="checkbox"></input>
+                    {% endif %}
+                    {% if owner %}
+                    <form action="{{ collection.get_absolute_url }}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="position" value="{{forloop.counter}}"></input>
+                      <input type="hidden" name="action" value="delete"></input>
+                      <input type="image" src="/files/trash.png" width="16" height="16" title="{% trans 'Delete this question' %}"></input>
+                    </form>
+                    {% endif %}
+                    </td>
+                  </tr>
+                </table>
+              </li>
+              {% endfor %}
+            </ol>

@@ -1,0 +1,112 @@
+{% extends "base.html" %}
+{% load customfilters %}
+{% load i18n %}
+{% block title %}{{block.super}} - {% trans "Find questions" %}{% endblock %}
+{% block menu_questions %} current{% endblock %}
+
+{% block javascript %}
+    <script type="text/javascript">
+    function select_all(field, link) {
+      if (link.innerHTML.match("select all")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = true ;
+        }
+        link.innerHTML = "select none";
+      }
+      else if (link.innerHTML.match("select none")) {
+        for (i = 0; i < field.length; i++) {
+          field[i].checked = false ;
+        }
+        link.innerHTML = "select all";
+      }
+    }
+    </script>
+    <style type="text/css">
+      #wing {
+        padding-top: 0;
+      }
+    </style>
+{% endblock %}
+
+{% block heading %}
+{% include "search.html" %}
+{% endblock %}
+
+{% block wing %}
+{% include "tag_cloud.html" %}
+{% endblock %}
+
+{% block trunk %}
+<form id="sort_form" action="{% url qqq.questions.views.questions %}" method="GET">
+              {% if query %}
+              <input type="hidden" name="{% trans 'query' %}" value="{{query}}">
+              {% endif %}
+              {% for tag in selected_tags %}
+              <input type="hidden" name="{% trans 'tag' %}" value="{{tag}}">
+              {% endfor %}
+          <h3 style="margin-bottom: .5em">
+            {% blocktrans count paginator.count as nr %}{{nr}} question{% plural %}{{nr}} questions{% endblocktrans %} {% if query %} {% trans "containing" %}
+            <b>
+              <i>
+                &ldquo;{{query}}&rdquo;
+              </i>
+            </b>
+            {% endif %} {% if selected_tags %} {% blocktrans count selected_tags|length as tags %}tagged with{% plural %}tagged with{% endblocktrans %} {% for tag in selected_tags %}
+            <a href="{% url qqq.questions.views.questions %}?{% trans 'tag' %}={{tag}}">
+              {{tag}}</a>{% if not forloop.last %},{% endif %} {% endfor %} {% endif %} {% if paginator.count > 1 %} {% trans "sorted by" %}
+              <select name="{% trans 'sort'%}" class="dropdown" onChange="document.getElementById('sort_form').submit()">
+                <option value="{% trans 'quality' %}" {% if sort == 'quality' %}selected{% endif %}>
+                  {% trans "quality" %}
+                </option>
+                <option value="{% trans 'difficulty' %}" {% if sort == 'difficulty' %}selected{% endif %}>
+                  {% trans "difficulty" %}
+                </option>
+                <option value="{% trans 'created' %}" {% if sort == 'created' %}selected{% endif %}>
+                  {% trans "date" %}
+                </option>
+              </select>
+              <input id="sort_submit" type="submit" value="{% trans 'Change' %}"></input>
+              <script type="text/javascript">
+                document.getElementById('sort_submit').style.display='none'
+              </script>
+              {% endif %}
+          </h3>
+</form>
+
+          {% if questions_list %} {% if is_paginated %}
+          <div style="float: left; margin: 5px 0 5px 10px;">
+            {% if page_obj.has_previous %}
+            <a href="{% url qqq.questions.views.questions %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% for tag in selected_tags %}{% trans 'tag' %}={{tag}}&{% endfor %}{% trans 'page' %}={{page_obj.previous_page_number}}">
+              &#x25C4;
+            </a>
+            {% else %} &#x25C4; {% endif %} {% for page in paginator.page_range %} {% if page == page_obj.number %}{{page}}{% else %}
+            <a href="{% url qqq.questions.views.questions %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% for tag in selected_tags %}{% trans 'tag' %}={{tag}}&{% endfor %}{% trans 'page' %}={{page}}">
+              {{page}}
+            </a>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <a href="{% url qqq.questions.views.questions %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% for tag in selected_tags %}{% trans 'tag' %}={{tag}}&{% endfor %}{% trans 'page' %}={{page_obj.next_page_number}}">
+              &#x25BA;
+            </a>
+            {% else %} &#x25BA; {% endif %}
+          </div>
+          {% endif %}
+          <div style="float: right; margin: 5px 10px 5px 0;">
+            {% if questions_list|length > 1 %}
+            <a href="#" onclick="select_all(document.getElementById('results_list').check, this); return false;">
+              select all
+            </a>
+            {% else %} &nbsp; {% endif %}
+          </div>
+
+
+          <form action="{% url qqq.collections.views.collection %}" method="POST" id="results_list">
+            {% csrf_token %}
+            
+            {% with "check" as action %}
+            {% include "questions_list.html" %}
+            {% endwith %}
+
+            <input value="{% trans 'Save selected questions' %}" style="float: right; margin: 0px 8px 18px 0;" type="submit"></input>
+          </form>
+          {% endif %}
+{% endblock %}

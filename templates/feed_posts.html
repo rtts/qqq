@@ -1,0 +1,28 @@
+{% load i18n %}
+
+          <ol class="inset listview" id="feed">
+            {% for item in feed %}
+            <li class="listitem {% cycle 'odd' 'even' %}">
+              <table cellspacing="0" class="question_item" cellpadding="0" border="0" style="padding: 5px 0 5px 0">
+                <tr>
+                  <td class="question_item_icon">
+                    <img src="/files/new_post.png"></img>
+                  </td>
+                  <td class="question_item_text">
+                    {% trans "A post from" %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}">
+                          {{item.user.username}}
+                        </a>
+                      </cite>
+                    </big>
+                    <p class="list_paragraph">
+                      <a href="{% url qqq.posts.views.view_post item.id %}" class="noline">{{item.subject}}</a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            {% empty %} {% trans "No posts yet" %} {% endfor %}
+          </ol>

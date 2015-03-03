@@ -1,0 +1,58 @@
+{% extends "question.html" %}
+{% load i18n debate_tags %}
+{% block title %}{{block.super}} - {% trans 'Improved question' %}{% endblock %}
+
+{% block question_no %}
+          <h1 class="title">
+          {% trans "Improved question" %}
+            (<a href="{{revision.object.get_absolute_url}}">{% trans "see original" %}</a>)
+          </h1>
+{% endblock %}
+
+{% block tags %}
+{% endblock %}
+
+{% block user %}
+{% trans "Suggested by" %}
+{% with revision.user as user %}
+{% include "user.html" %}
+{% endwith %}
+{% endblock %}
+
+{% block rate %}{% endblock %}
+
+{% block wing %}
+<form class="vote" action="{% url qqq.revisions.views.vote_for_revision %}" method="POST" style="margin-bottom: .5em">
+{%csrf_token%}
+<input type="hidden" name="vote" value="up">
+<input type="hidden" name="id" value="{{revision.id}}">
+<input type="hidden" name="next" value="{{revision.get_absolute_url}}">
+<input type=submit style="width: 100%" value="+1 {% trans 'Upvote' %}" style="width: 100%" {%if user_has_voted == 1%}disabled="disabled"{%endif%}><br>
+</form>
+<form class="vote" action="{% url qqq.revisions.views.vote_for_revision %}" method="POST" style="margin-bottom: 1.5em">
+{%csrf_token%}
+<input type="hidden" name="vote" value="down">
+<input type="hidden" name="id" value="{{revision.id}}">
+<input type="hidden" name="next" value="{{revision.get_absolute_url}}">
+<input type=submit style="width: 100%" value="&ndash;1 {% trans 'Downvote' %}" style="width: 100%" {%if user_has_voted == -1%}disable="disabled"{%endif%}><br>
+</form>
+
+<h2 style="margin-top: 1em">{% trans "Description of changes" %}</h2>
+<p>{{revision.description}}</p>
+
+<h2>{% trans "Score" %}: {{score}} <small>({{pro}} {% trans "for" %}, {{con}} {% trans "against" %})</small></h2>
+<p style="margin-bottom: 1em">
+{% blocktrans %}
+This improvement will be applied when the score reaches {{limit}} points.
+{% endblocktrans %}
+{% if vote.is_upvote %}
+{% trans "You have voted <i>for</i> this improvement." %}
+{% endif %}
+{% if vote.is_downvote %}
+{% trans "You have voted <i>against</i> this improvement." %}
+{% endif %}
+</p>
+{% endblock %}
+
+{% block comments %}
+{% endblock %}

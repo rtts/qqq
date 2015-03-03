@@ -1,0 +1,10 @@
+server {
+  server_name qualityquizquestions.org;
+  rewrite ^(.*) http://www.qualityquizquestions.org$1 permanent;
+}
+
+server {
+  location /files { alias /home/www/qualityquizquestions/files; }
+  server_name www.qualityquizquestions.org;
+  root /home/www/qualityquizquestions/main;
+}

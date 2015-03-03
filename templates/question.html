@@ -1,0 +1,299 @@
+{% extends "base.html" %}
+{% load customfilters %}
+{% load i18n %}
+{% load debate_tags %}
+{% block title %}{{block.super}} - {{question.text}}{% endblock %}
+
+{% block javascript %}
+     <script type="text/javascript">
+     function toggle(id) {
+       var target = document.getElementById(id);
+       if (target.style.display == "none") {
+         target.style.display="block";
+       }
+       else {
+         target.style.display="none";
+       }
+     }
+     
+     function rate() {
+       var selections = 0
+       form = document.getElementById('ratingform')
+       inputs = form.getElementsByTagName('input')
+       if (inputs) {
+         for (i = 0; i < inputs.length; ++i) {
+           if (inputs[i].type == 'radio' && inputs[i].checked) {
+             selections++
+           }
+         }
+       }
+       if (selections >= 2) {
+         form.submit()
+       }
+     }
+     </script>
+    <style type="text/css">
+      #wing {
+        width: 35%;
+        padding-top: 0;
+      }
+      #trunk {
+        width: 60%;
+      }
+      #heading {
+        width: 98%;
+      }
+    </style>
+{% endblock %}
+
+{% block menu_questions %} current{% endblock %}
+
+{% comment %}
+{% block youtube %}
+{% if question.video_html %}
+<div id="youtube" style="display: none">
+  <div class='overlay'>
+  </div>
+  <div class='video'><a href='#' onClick='toggle("youtube"); return false' id='close_video'>{% trans "Close" %}<img src="/files/closebutton.png" width=30 height=30 style="position: relative; top: 9px"></a>
+  {{question.video_html|safe}}
+  </div>
+</div>
+{% endif %}
+{% endblock %}
+{% endcomment %}
+
+{% block heading %}
+          {% block question_no %}
+          {% if collection %}
+          <h1 style="display: block" class="title">
+            <nobr>
+              {% trans "Question" %} &#x2116; {{numero}} {% if question.video_html %}
+              <a href="#" onclick="toggle('youtube'); return false">
+                show video
+              </a>
+              {% endif %}
+            </nobr>
+            {% if previous %}
+            <span class="question_previous">
+              <a href="{{ previous }}">
+                &#x25C4; {% trans "previous" %}
+              </a>
+            </span>
+            {% else %}
+            <span style="font-weight: bold; color: #e4dff5" class="question_previous">
+              &#x25C4; {% trans "previous" %}
+            </span>
+            {% endif %} {% if next %}
+            <span class="question_next">
+              <a href="{{ next }}">
+                {% trans "next" %} &#x25BA;
+              </a>
+            </span>
+            {% else %}
+            <span style="font-weight: bold; color: #e4dff5" class="question_next">
+              {% trans "next" %} &#x25BA;
+            </span>
+            {% endif %}
+          </h1>
+          {% else %}
+          <form action="{% url qqq.collections.views.collection %}" method="POST" style="margin-top: .5em; float: right">
+            {% csrf_token %}
+            <input value="{{question.pk}}" name="check" type="hidden"></input>
+            <input value="{% trans 'Add this question to collection' %}" type="submit"></input>
+          </form>
+          {% endif %}
+          {% endblock %}
+
+          <hr>
+          <div class="question">
+            <p style="font-size: 1.75em; margin: 1em 0 1em 0">
+              {{question.text|linebreaksbr}}
+            </p>
+            {% block tags %}
+            <em>
+              {% trans "Tags" %}:
+            </em>
+            {% for tag in tags %}{{tag.name}}{% if not forloop.last %}, {% endif %}{% empty %}{% trans "none" %}{% endfor %} {% if request.user.is_authenticated %}
+            <small>
+              (<a href="#" onclick="toggle('tagform'); document.getElementById('tagbox').focus(); return false;">{% trans "Change" %}</a>)
+            </small>
+            <form style="clear:both" action="{% url qqq.questions.views.update_tags question.pk %}" method="POST" id="tagform">
+              {% csrf_token %}
+              <div style="padding: 0" class="inset">
+                <input value="{% for tag in tags %}{{tag.name}}{% if not forloop.last %}, {% endif %}{% endfor %}" name="tags" type="text" class="tagbox" id="tagbox"></input>
+              </div>
+              <input value="{% trans 'Update' %}" type="submit"></input>
+            </form>
+            <script type="text/javascript">
+              toggle('tagform')
+            </script>
+            {% endif %} {% endblock %}
+            <div class="question_user">
+              {% block user %} {% with question.user as user %} {% include "user.html" %} {% endwith %} {% for user in question.contributors.all %} {% include "user.html" %} {% endfor %} {% endblock %}
+            </div>
+          </div>
+
+          <hr>
+          {% block rate %}
+          {% if should_rate %}
+          <form action="" method="POST" class="rate" id="ratingform">
+          {% csrf_token %}
+            <p>
+              {% trans "What is the quality of this question?" %}
+              <br>
+              <small>
+                {% trans "bad" %}
+              </small>
+              <input type=radio name=quality value=1 id=q1 onClick="rate()"><label for=q1>1</label>
+              <input type=radio name=quality value=2 id=q2 onClick="rate()"><label for=q2>2</label>
+              <input type=radio name=quality value=3 id=q3 onClick="rate()"><label for=q3>3</label>
+              <input type=radio name=quality value=4 id=q4 onClick="rate()"><label for=q4>4</label>
+              <input type=radio name=quality value=5 id=q5 onClick="rate()"><label for=q5>5</label>
+              <input type=radio name=quality value=6 id=q6 onClick="rate()"><label for=q6>6</label>
+              <input type=radio name=quality value=7 id=q7 onClick="rate()"><label for=q7>7</label>
+              <input type=radio name=quality value=8 id=q8 onClick="rate()"><label for=q8>8</label>
+              <input type=radio name=quality value=9 id=q9 onClick="rate()"><label for=q9>9</label>
+              <input type=radio name=quality value=10 id=q10 onClick="rate()"><label for=q10>10</label>
+              <small>
+                {% trans "good" %}
+              </small>
+            </p>
+  
+            <p>
+              {% trans "What is the difficulty of this question?" %}
+              <br>
+              <small>
+                {% trans "easy" %}
+              </small>
+              <input type=radio name=difficulty value=1 id=d1 onClick="rate()"><label for=d1>1</label>
+              <input type=radio name=difficulty value=2 id=d2 onClick="rate()"><label for=d2>2</label>
+              <input type=radio name=difficulty value=3 id=d3 onClick="rate()"><label for=d3>3</label>
+              <input type=radio name=difficulty value=4 id=d4 onClick="rate()"><label for=d4>4</label>
+              <input type=radio name=difficulty value=5 id=d5 onClick="rate()"><label for=d5>5</label>
+              <input type=radio name=difficulty value=6 id=d6 onClick="rate()"><label for=d6>6</label>
+              <input type=radio name=difficulty value=7 id=d7 onClick="rate()"><label for=d7>7</label>
+              <input type=radio name=difficulty value=8 id=d8 onClick="rate()"><label for=d8>8</label>
+              <input type=radio name=difficulty value=9 id=d9 onClick="rate()"><label for=d9>9</label>
+              <input type=radio name=difficulty value=10 id=d10 onClick="rate()"><label for=d10>10</label>
+              <small>
+                {% trans "hard" %}
+              </small>
+            </p>
+            <input type=submit value="Go" id='ratesubmit'>
+            <script type="text/javascript">
+            document.getElementById('ratesubmit').style.display = 'none'
+            </script>
+          </form>
+          {% else %}
+
+                <div style="padding: 0 10% 10px 10%">
+                <h3 style="margin-bottom: .5em">{% trans "Quality" %}: {{question.quality|floatformat:2}}</h3>
+                  <div style="text-align: left; height: 24px; width: 100%; border: 1px solid #aaa; background: #e4dff5">
+                    <div style="height: 24px; width: {{question.quality|multiplyby:100}}%; background: #c6e6d7; border-right: 1px solid #aaa"></div>
+                  </div>
+                <h3 style="margin-bottom: .5em">{% trans "Difficulty" %}: {{question.difficulty|floatformat:2}}</h3>
+                  <div style="text-align: left; height: 24px; width: 100%; border: 1px solid #aaa; background: #e4dff5">
+                    <div style="height: 24px; width: {{question.difficulty|multiplyby:100}}%; background: #e6cfd1; border-right: 1px solid #aaa"></div>
+                  </div>
+                </div>
+
+
+          {% endif %}
+          <hr>
+          {% endblock %}
+{% endblock %}
+
+{% block wing %}
+          {% if question.needs_revision %}
+          <h2>
+            <img src="/files/needs_revision.png" valign="top">
+            {% trans "Needs improvement!" %}
+          </h2>
+          <p>
+            {% trans "This question consistently receives poor quality ratings. This has triggered a proposal for deletion of this question. Please vote for or against the deletion of this question or, even better, suggest an improvement for this question!" %}
+          </p>
+
+<form class="vote" action="{%url qqq.questions.views.vote_for_deletion%}" method="POST" style="margin-bottom: .5em">
+{%csrf_token%}
+<input type="hidden" name="vote" value="up">
+<input type="hidden" name="id" value="{{question.pk}}">
+<input type=submit style="width: 100%" value="{% trans 'Delete this question' %}" style="width: 100%" {%if user_has_voted == 1%}disabled="disabled"{%endif%}><br>
+</form>
+<form class="vote" action="{%url qqq.questions.views.vote_for_deletion%}" method="POST" style="margin-bottom: 1.5em">
+{%csrf_token%}
+<input type="hidden" name="vote" value="down">
+<input type="hidden" name="id" value="{{question.pk}}">
+<input type=submit style="width: 100%" value="{% trans 'Keep this question'%}" style="width: 100%" {%if user_has_voted == -1%}disable="disabled"{%endif%}><br>
+</form>
+<h2>
+{% trans "Score:" %} {{score}}
+<small>({{pro}} {% trans "for" %}, {{con}} {% trans "against" %})</small>
+</h2>
+<p style="margin-bottom: 1em">
+{% trans "This question will be deleted when the score reaches" %} {{limit}} {% trans "points." %}
+{% if vote.is_upvote %}
+{% trans "You voted" %} <i>{% trans "for" %}</i> {% trans "the deletion of this question." %}
+{% endif %}
+{% if vote.is_downvote %}
+{% trans "You voted" %} <i>{% trans "against" %}</i> {% trans "the deletion of this question." %}
+{% endif %}
+</p>
+         
+        {% endif %}
+
+        
+
+
+        <h2>
+          {% trans "Improvements" %}
+        </h2>
+        {% with question.get_revisions as feed %}
+        {% include "feed_revisions.html" %}
+        {% endwith %}
+        <p>
+          <a href="{% url qqq.revisions.views.add_revision %}?{% trans 'question' %}={{question.numero}}">
+            {% trans "Suggest a new improvement!" %}
+          </a>
+        </p>
+{% endblock %}
+
+{% block trunk %}
+        <h2>
+          {% trans "The Answer" %}
+        </h2>
+        <p style="display: none" id="ansshow">
+          <a href="#" onclick="toggle('ansshow'); toggle('anshide'); toggle('ans'); return false;">
+            {% trans "View the answer" %}
+          </a>
+        </p>
+        <p style="display: none" id="anshide">
+          <a href="#" onclick="toggle('ansshow'); toggle('anshide'); toggle('ans'); return false;">
+            {% trans "Hide the answer" %}
+          </a>
+        </p>
+        <div id="ans">
+          <p>
+            {{question.answer}}
+          </p>
+        </div>
+        <script type="text/javascript">
+        toggle('ansshow')
+        toggle('ans')
+        </script>
+
+        <h2 style="margin-top: 1em">
+          {% trans "Sources" %}
+        </h2>
+        <p>
+          {% if question.sources %}{{question.sources|urlizetrunc:50|linebreaks}}{% else %}
+          {% trans "There are no sources (yet)." %}
+          {% endif %}
+        </p>
+        
+        {% block comments %}
+        <h2>Reacties</h2>
+        {% render_debate question request.user %}
+        {% endblock %}
+        
+
+{% endblock %}

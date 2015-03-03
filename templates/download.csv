@@ -1,0 +1,3 @@
+{% load i18n customfilters %}"{% trans 'Question' %}", "{% trans 'Answer' %}", "{% trans 'Author(s)' %}"
+{% for q in questions %}"{{ q.text|stripnewlines }}", "{{ q.answer|stripnewlines }}", "{{ q.user.username }}{% for c in q.contributors.all %}, {{ c.username }}{% endfor %}"
+{% endfor %}"{% trans 'All questions and answers copyrighted by their author(s)' %}"

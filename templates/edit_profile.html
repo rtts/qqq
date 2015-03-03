@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% trans 'Edit your public profile' %}{% endblock %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "Who is" %}
+{{username}}?
+</h1>
+{% endblock %}
+
+{% block wing %}
+<h2 style="margin-top: 80px">
+{% trans "Instructions" %}
+</h2>
+{% blocktrans %}
+<p>Please describe yourself in a few sentences (or paragraphs).</p>
+<p>If you want,
+you can use <a href='http://en.wikipedia.org/wiki/Markdown'>Markdown</a> for
+formatting.</p>
+
+<p>For headings, underline text like this:</p>
+
+<pre>Heading 1
+=========
+
+Heading 2
+---------</pre>
+
+
+<p>For emphasis, use *asterisks*. This will look like
+<em>asterisks</em></p>
+
+<p>
+You can produce links like this:<br>
+<pre>[visit my homepage](http://jayj.dk/grim/)</pre>
+Which results in <a href="http://jayj.dk/grim/">visit my homepage!</a>
+</p>
+
+{% endblocktrans %}
+{% endblock %}
+
+{% block trunk %}
+<p>
+<form action="" method="POST">
+{% csrf_token %}
+<div class="inset">
+{{form.description.errors}}
+{{form.description}}
+</div>
+<input type="submit" value="{% trans 'Update Profile' %}">
+</form>
+{% endblock %}

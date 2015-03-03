@@ -1,0 +1,24 @@
+Om de hoofdprijs te winnen in een tv-programma moet een deelnemer kiezen uit
+drie deuren. Na deze keuze opent de presentator één van de niet gekozen
+deuren en laat zien dat er geen prijs achter zit. Maakt de deelnemer meer,
+minder, of evenveel kans om te winnen door nu van keuze te wisselen?
+
+Hints
+
+1. De presentator zal nooit als eerste een deur openen waar een prijs
+achter zit
+2. Stel je voor dat er niet drie, maar honderd deuren zijn, en de
+presentator 98 deuren opent waar geen prijs achter zit
+3. Wat is de kans om te winnen als je niet van keuze verandert?
+
+Het juiste antwoord is: Meer
+
+De verklaring
+
+De kans om te winnen als je niet van deur verandert is gelijk aan de kans
+dat je in de eerste instantie de juiste deur kiest: één derde. De kans om te
+winnen als je wel van deur verandert is dus twee derde.
+
+Bronnen
+
+Monty Hall Problem (Wikipedia): http://en.wikipedia.org/Monty_Hall_Problem

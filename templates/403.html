@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% block title %}403 Forbidden{% endblock %}
+{% block trunk %}
+<h1>403 Forbidden</h1>
+
+<p>
+&ldquo;The server understood the request, but is refusing to fulfill it. Authorization will
+not help and the request [should not] be repeated.&rdquo;
+</p>
+
+<p>
+source: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">http://www.w3.org/Protocols/rfc2616/rfc2616.html</a>
+</p>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

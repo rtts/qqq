@@ -1,0 +1,5 @@
+#!/bin/bash
+. ../bin/activate
+mv mptt ../
+./manage.py makemessages -e .txt -e .html -l nl
+mv ../mptt ./

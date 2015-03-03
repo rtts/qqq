@@ -1,0 +1,28 @@
+{% load i18n customfilters %}
+
+          <ol class="inset listview" id="feed">
+            {% for item in feed %}
+            <li class="listitem {% cycle 'odd' 'even' %}">
+              <table cellspacing="0" class="question_item" cellpadding="0" border="0" style="padding: 5px 0 5px 0">
+                <tr>
+                  <td class="question_item_icon">
+                    <img src="/files/new_revision.png"></img>
+                  </td>
+                  <td class="question_item_text">
+                    {{item.score}} {% trans "of" %} {{item.edit_distance|plus:1}} {% trans "points" %} {% trans "by" %}
+                    <big>
+                      <cite>
+                        <a href="{% url user_profile.views.view_profile item.user.username %}">{{item.user.username}}</a>:
+                      </cite>
+                    </big>
+                    <p class="list_paragraph">
+                      <a href="{{item.get_absolute_url}}" style="font-weight: normal">
+                        {{ item.description }}
+                      </a>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            {% empty %} {% trans "No improvements yet" %} {% endfor %}
+          </ol>

@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% load i18n markup %}
+
+{% block javascript %}
+    <style type="text/css">
+      #wing {
+        width: 45%;
+      }
+      #trunk {
+        width: 50%;
+      }
+      #heading {
+        width: 98%;
+      }
+    </style>
+{% endblock %}
+
+{% block heading %}
+        <ul class="list" style="float: right">
+          <li>
+            <a href="{% url user_profile.views.compose username %}">
+              {% blocktrans %}Send {{username}} a personal message{% endblocktrans %}
+            </a>
+          </li>
+        </ul>
+{% endblock %}
+
+{% block wing %}
+        <h2>
+          {% blocktrans %}{{username}}'s quality points{% endblocktrans %}
+        </h2>
+        <p>
+          {% blocktrans count points=karma %}{{username}} has <b>{{points}} quality point</b>.{% plural %}{{username}} has <b>{{points}} quality points.</b>{% endblocktrans %}
+        </p>
+        <p>
+          {% trans "You receive quality points each time someone positively rates the quality of a question you submitted. You also receive points each time one of your improvements is applied." %}
+        </p>
+
+        <h2>
+          {% blocktrans %}{{username}}'s recent contributions{% endblocktrans %}
+        </h2>
+        {% include "feed.html" %}
+{% endblock %}
+
+{% block trunk %}
+  {% if description %}
+    {{description|force_escape|markdown}}
+  {% else %}
+    {% trans "[ page intentionally left empty ]" %}
+  {% endif %}
+{% endblock %}
+

@@ -1,0 +1,107 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{% if question %}{% trans "Suggest an improvement" %}{% else %}{% trans "Add a question" %}{% endif %}{% endblock %}
+{% block javascript %}
+     <script type="text/javascript">
+     function toggle(id) {
+       var target = document.getElementById(id);
+       if (target.style.display == "none") {
+         target.style.display="block";
+       }
+       else {
+         target.style.display="none";
+       }
+     }
+     </script>
+{% endblock %}
+{% block menu_participate %} current{% endblock %}
+{% block heading %}
+        {% if question %}
+        <h1 class="title">
+          {% trans "Suggest an improvement" %}
+        </h1>
+        {% else %}
+        <h1 class="title">
+          {% trans "Add a new question to the database" %}
+        </h1>
+        {% endif %}
+{% endblock %}
+{% block trunk %}
+          {% if form.non_field_errors %}
+          <div class="register_form_errors">
+            {{form.non_field_errors}}
+          </div>
+          {% endif %}
+          <form action="" method="POST">
+            {% csrf_token %} {% if question %}
+            <input value="false" name="final" type="hidden"></input>
+            {% endif %}
+            
+            {% comment %}
+            {% if not question %}
+            <div style="display: none" id="video_question_toggle">
+              <p style="margin-bottom: 1em">
+                <a href="#" onclick="toggle('video_question'); toggle('video_question_toggle'); return false">
+                  NEW: Make this a video question!
+                </a>
+              </p>
+            </div>
+            <div id="video_question" class="inset">
+              <label for="id_video_url" class="label">
+                {% trans "Youtube URL (copy and paste the address of the Youtube video)" %}
+              </label>
+              {{form.video_url.errors}}
+              <input type="text" value="{{form.data.video_url}}" id="id_video_url" name="video_url" class="input" autocomplete="off"></input>
+            </div>
+            {% endif %}
+            <script type="text/javascript">
+              toggle('video_question')
+              toggle('video_question_toggle')
+            </script>
+            {% endcomment %}
+
+            <div class="inset">
+              <label for="id_text" class="label">
+                {% trans "Question" %}
+              </label>
+              {{form.text.errors}}
+              {{form.text}}
+              <script type="text/javascript">
+                document.getElementById('id_text').focus()
+              </script>
+            </div>
+            <div class="inset">
+              <label for="id_answer" class="label">
+                {% trans "Answer" %}
+              </label>
+              {{form.answer.errors}}
+              <input type="text" id="id_answer" name="answer" value="{{form.data.answer}}" class="input" autocomplete="off"></input>
+            </div>
+            <div class="inset">
+              <label for="id_sources" class="label">
+                {% trans "Sources" %}
+              </label>
+              {{form.sources.errors}}
+              {{form.sources}}
+            </div>
+            {% if not question %}
+            <div class="inset">
+              <label for="id_tags" class="label">
+                {% trans "Tags" %}
+              </label>
+              {{form.tags.errors}}
+              <input type="text" id="id_tags" name="tags" value="{{form.data.tags}}" class="input"></input>
+            </div>
+            {{form.notify}}
+            <label for="id_notify">
+              {% trans "Send me a pm when someone replies to this question" %}
+            </label>
+            {% endif %}
+            <p>
+              <input value="{% trans 'Submit' %}" type="submit"></input>
+            </p>
+          </form>
+{% endblock %}
+
+{% block wing %}
+{% endblock %}

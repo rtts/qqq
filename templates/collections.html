@@ -1,0 +1,110 @@
+{% extends "base.html" %}
+{% load customfilters %}
+{% load i18n %}
+{% block title %}{{block.super}} - {% trans "Browse collections" %}{% endblock %}
+{% block menu_collections %} current{% endblock %}
+
+{% block javascript %}
+{% endblock %}
+
+{% block heading %}
+          <form action="{% url qqq.collections.views.collections %}" method="GET" class="search_form">
+            <nobr>
+              <input value="{{query}}" name="{% trans 'query' %}" class="search_box" type="text"></input>
+              <input value="{% trans 'Search Collections' %}" type="submit"></input>
+              {% if sort %}
+              <input value="{% trans sort %}" name="{% trans 'sort' %}" type="hidden"></input>
+              {% endif %}
+            </nobr>
+          </form>
+{% endblock %}
+
+{% block wing %}
+{% endblock %}
+
+{% block trunk %}
+          {% if query %}
+          <h3 style="margin-bottom: .5em">
+            {% blocktrans count paginator.count as nr %}{{nr}} collection containing{% plural %}{{nr}} collections containing{% endblocktrans %}
+            <b>
+              <i>
+                &ldquo;{{query}}&rdquo;
+              </i>
+            </b>
+          </h3>
+          {% endif %}
+
+          {% if collections_list %}
+          {% if is_paginated %}
+          <div style="float: left; margin: 5px 0 5px 10px;">
+            {% if page_obj.has_previous %}
+            <a href="{% url qqq.collections.views.collections %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% trans 'page' %}={{page_obj.previous_page_number}}">
+              &#x25C4;
+            </a>
+            {% else %} &#x25C4; {% endif %} {% for page in paginator.page_range %} {% if page == page_obj.number %}{{page}}{% else %}
+            <a href="{% url qqq.collections.views.collections %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% trans 'page' %}={{page}}">
+              {{page}}
+            </a>
+            {% endif %} {% endfor %} {% if page_obj.has_next %}
+            <a href="{% url qqq.collections.views.collections %}?{% if query %}{% trans 'query' %}={{query}}&{% endif %}{% if sort %}{% trans 'sort' %}={% trans sort %}&{% endif %}{% trans 'page' %}={{page_obj.next_page_number}}">
+              &#x25BA;
+            </a>
+            {% else %} &#x25BA; {% endif %}
+          </div>
+          {% endif %}
+          
+          <ol class="inset listview">
+            {% for item in collections_list %}
+            <li style="padding-left: 0" class="listitem {% cycle 'odd' 'even' %}">
+              <table cellspacing="0" class="question_item" cellpadding="0" border="0">
+                <tr>
+{% comment %}
+<!--
+                  <td style="width:25px; padding: 5px 15px">
+                    {% if votes|user_can_upvote:item.pk %}
+                    <form action="{% url qqq.collections.views.vote_for_collection %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="vote" value="up"></input>
+                      <input type="hidden" name="id" value="{{item.pk}}"></input>
+                      <input type="hidden" name="sort" value="{{sort}}"></input>
+                      <input type="image" src="/files/upvote_purple.png"></input>
+                    </form>
+                    {% else %}
+                    <img src="/files/upvote_disabled.png">
+                    {% endif %}
+                    {% if votes|user_can_downvote:item.pk %}
+                    <form action="{% url qqq.collections.views.vote_for_collection %}" method="POST">
+                      {% csrf_token %}
+                      <input type="hidden" name="vote" value="down"></input>
+                      <input type="hidden" name="id" value="{{item.pk}}"></input>
+                      <input type="hidden" name="sort" value="{{sort}}"></input>
+                      <input type="image" src="/files/downvote_purple.png"></input>
+                    </form>
+                    {% else %}
+                    <img src="/files/downvote_disabled.png">
+                    {% endif %}
+                  </td>
+                  <td style="width: 3em">
+                    <p style="font-size: 1.1em">
+                      {{item.votes}}
+                    </p>
+                  </td>
+-->
+{% endcomment %}
+                  <td class="question_item_text" style="padding-left: 20px">
+                    <p class="list_paragraph">
+                      <a href="{{ item.get_absolute_url }}" style="font-weight: normal">
+                        {{item.title}} 
+                      </a>
+                      <cite style="font-size: .75em">{% trans 'composed by' %} <a style="font-weight: normal" href="{% url user_profile.views.view_profile item.user.username %}">{{item.user.username}}</a></cite>
+                      <br>
+                      <span style="font-size: .75em">{{item.description}}</span>
+                    </p>
+                  </td>
+                </tr>
+              </table>
+            </li>
+            {% endfor %}
+          </ol>
+          {% endif %}
+{% endblock %}

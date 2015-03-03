@@ -1,0 +1,128 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block title %}{{ block.super }} - {% trans "Members home" %}{% endblock %}
+{% block menu_questions %}{% endblock %}
+{% block menu_home %} current{% endblock %}
+
+{% block javascript %}
+    <style type="text/css">
+    #wing {
+      padqding-top: 55px;
+    }
+    </style>
+{% endblock %}
+
+{% block heading %}
+<div style="display: inline-block; margin: .5em -.5em 0 0; float: right">
+          <a href="{% url qqq.questions.views.add_question %}" style="color: white; margin: .5em" class="button">
+            <img src="/files/new_question.png" style="vertical-align: middle; position: relative; top: 2px" border="0"></img>
+            {% trans "New question" %}
+          </a>
+          <a href="{% url qqq.posts.views.new_post %}" style="color: white; margin: .5em" class="button">
+            <img src="/files/new_post.png" style="vertical-align: middle" border="0"></img>
+            {% trans "New post" %}
+          </a>
+</div>
+{% endblock %}
+
+{% block wing %}
+  <h2 style="margin-bottom: 1em">{% trans "Your personal messages" %}</h2>
+
+  <ol style="list-style: none; margin: 0; padding: 0">
+    {% for message in message_list %}
+    <li style="margin-bottom: 1em">
+      <div style="overflow: hidden; text-overflow: ellipsis; white-space: nowrap;">
+        {% if message.new %}
+        <a href="{% url user_profile.views.view_profile message.sender.username %}">{{message.sender}}</a>:
+        <a href="{% url user_profile.views.view_message message.id %}" style="font-weight: bold">{{message.subject}}</a>
+        {% else %}
+        <a href="{% url user_profile.views.view_profile message.sender.username %}" style="font-weight: normal">{{message.sender}}</a>:
+        <a href="{% url user_profile.views.view_message message.id %}" style="font-weight: normal">{{message.subject}}</a>
+        {% endif %}
+        <br>
+        <a style="float: right" href="{% url user_profile.views.delete %}?message={{message.id}}"><img src="/files/trash.png" border="0" alt="{% trans 'Delete this message' %}"></img></a>
+        <span class="date">{{ message.sent_at|date:"DATE_FORMAT" }}</span>
+      </div>
+    </li>
+    {% empty %}
+    {% trans "No messages" %}
+{% comment %}
+      {% if message.replied %}({% trans "replied" %}){% endif %}
+      <a href="{% url user_profile.views.compose message.sender.username %}?parent={{message.id}}">{% trans "Reply to this message" %}</a>
+      <a href="{% url user_profile.views.delete %}?message={{message.id}}">{% trans "Delete this message" %}</a>
+{% endcomment %}
+    {% endfor %}
+  </ol>
+
+{% endblock %}
+
+{% block trunk %}
+        <h2>
+          {% trans "Recent member contributions" %}
+        </h2>
+
+        <form style="float: right; margin-bottom: 1em" action="/" method="GET" id="filter">
+          {% trans "show" %}
+          <select onchange="document.getElementById('filter').submit()" name="{% trans 'filter' %}" class="dropdown">
+            <option value="">
+              {% trans "all contributions" %}
+            </option>
+            <option value="{% trans 'questions' %}"{% if filter == "questions" %} selected="selected"{% endif %}>
+              {% trans "questions" %}
+            </option>
+            <option value="{% trans 'improvements' %}"{% if filter == "improvements" %} selected="selected"{% endif %}>
+              {% trans "improvements" %}
+            </option>
+            <option value="{% trans 'collections' %}"{% if filter == "collections" %} selected="selected"{% endif %}>
+              {% trans "collections" %}
+            </option>
+            <option value="{% trans 'posts' %}"{% if filter == "posts" %} selected="selected"{% endif %}>
+              {% trans "posts" %}
+            </option>
+          </select>
+          <input value="{% trans 'Filter' %}" type="submit" id="filter_submit"></input>
+          <script type="text/javascript">
+            document.getElementById('filter_submit').style.display='none'
+          </script>
+        </form>
+
+        {% if feed.paginator.num_pages > 1 %}
+        <div style="float: left; margin: 5px 0 5px 10px;">
+          {% if feed.has_previous %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{feed.previous_page_number}}">
+            &#x25C4;
+          </a>
+          {% else %} &#x25C4; {% endif %} {% for page in feed.paginator.page_range %} {% if page == feed.number %}{{page}}{% else %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{page}}">
+            {{page}}
+          </a>
+          {% endif %} {% endfor %} {% if feed.has_next %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{feed.next_page_number}}">
+            &#x25BA;
+          </a>
+          {% else %} &#x25BA; {% endif %}
+        </div>
+        {% endif %}
+
+        {% with feed.object_list as feed %}
+          {% include "feed.html" %}
+        {% endwith %}
+          
+        {% if feed.paginator.num_pages > 1 %}
+        <div style="float: left; margin: 5px 0 5px 10px;">
+          {% if feed.has_previous %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{feed.previous_page_number}}">
+            &#x25C4;
+          </a>
+          {% else %} &#x25C4; {% endif %} {% for page in feed.paginator.page_range %} {% if page == feed.number %}{{page}}{% else %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{page}}">
+            {{page}}
+          </a>
+          {% endif %} {% endfor %} {% if feed.has_next %}
+          <a href="{% url qqq.views.home %}?{% if filter %}{% trans 'filter' %}={% trans filter %}&{% endif %}{% trans 'page' %}={{feed.next_page_number}}">
+            &#x25BA;
+          </a>
+          {% else %} &#x25BA; {% endif %}
+        </div>
+        {% endif %}
+{% endblock %}

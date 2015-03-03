@@ -1,0 +1,14 @@
+{% load i18n %}
+
+          <form class="search_form" action="{% url qqq.questions.views.questions %}" method="GET" id="search_form">
+          <nobr>
+            <input value="{{query}}" type="text" name="{% trans 'query' %}" class="search_box"></input>
+            <input value="{% trans 'Search Questions' %}" type="submit"></input>
+            {% for tag in selected_tags %}
+            <input type="hidden" name="{% trans 'tag' %}" value="{{tag}}">
+            {% endfor %}
+            {% if sort %}
+            <input type="hidden" name="{% trans 'sort' %}" value="{% trans sort %}">
+            {% endif %}
+          </nobr>
+          </form>

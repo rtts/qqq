@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "New post"%}
+</h1>
+{% endblock %}
+
+{% block trunk %}
+<form action="" method="POST">
+{% csrf_token %}
+
+<div class="inset">
+<label for="subject" class="label">{% trans "Subject" %}</label>
+<input id="subject" value="{{form.data.subject}}" type="text" name="subject" autocomplete="off" class="input">
+</div>
+{{form.subject.errors}}
+
+<div class="inset">
+<label for="body" style="color: #999; font-size: .85em">{% trans "Body" %}</label>
+<textarea id="body" name="body" rows="15" cols="60">{{form.data.body}}</textarea>
+</div>
+{{form.body.errors}}
+
+{{form.notify}}<label for="id_notify">{% trans "Send me a pm when someone replies to this post" %}</label>
+
+<p>
+<input type="submit" value="{% trans 'Submit' %}">
+</p>
+</form>
+{% endblock %}

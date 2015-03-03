@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}504 Gateway Timeout{% endblock %}
+{% block trunk %}
+<h1>504 Gateway Timeout</h1>
+
+<p>
+&ldquo;
+The server, while acting as a gateway or proxy, did not receive a timely response
+from the upstream server [...] it needed to access in attempting to complete the
+request.&rdquo;
+</p>
+
+<p>
+source: <a href="http://www.w3.org/Protocols/rfc2616/rfc2616.html">http://www.w3.org/Protocols/rfc2616/rfc2616.html</a>
+</p>
+{% endblock %}
+
+{% block footer %}
+{% endblock %}

@@ -1,0 +1,8 @@
+{% load i18n %}{% autoescape off %}{% blocktrans %}You wrote:
+{{original_text}}
+
+{{username}} replied with:
+{{reply_text}}
+
+See the complete discussion at: {% endblocktrans %}{% trans 'http://en.qualityquizquestions.org' %}{{url}}
+{% endautoescape %}

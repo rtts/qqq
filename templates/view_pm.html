@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% load i18n %}
+
+{% block heading %}
+<h1 class="title">
+{% trans "A personal message from" %}
+<a href="{% url user_profile.views.view_profile msg.sender.username %}">{{msg.sender.username}}</a>
+</h1>
+{% endblock %}
+
+{% block trunk %}
+<h2>
+{{msg.subject}}
+</h2>
+{{msg.body|urlizetrunc:50|linebreaks}}
+{% endblock %}
